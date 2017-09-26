@@ -1,0 +1,62 @@
+/*Components*/
+@import "components/divider";
+@import "components/button";
+@import "components/slider";
+@import "components/select";
+@import "components/iconInput";
+
+/*Section*/
+@import "sections/pageHeader";
+@import "sections/hero";
+@import "sections/bestSeller";
+@import "sections/new";
+@import "sections/order";
+@import "sections/sales";
+@import "sections/allModel";
+@import "sections/pageFooter";
+
+
+@import "common";
+
+@import "variables";
+
+* {
+    box-sizing: border-box;
+    font-family: $main_font;
+    -webkit-font-smoothing: antialiased;
+}
+
+html,body{
+    height:100%;
+    width:100%;
+    margin: 0;
+    background-color: $white;
+}
+
+ul,h1,h2,h3,h4,p {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    line-height: 0.9;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:active {
+    color: inherit;
+}
+
+li {
+    list-style-type: none;
+}
+
+button,input {
+    outline: 0;
+    border: 0;
+    background-color: transparent;
+    padding:0;
+}

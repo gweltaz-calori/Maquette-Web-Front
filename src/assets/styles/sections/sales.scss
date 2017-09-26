@@ -1,0 +1,75 @@
+@import "../variables";
+@import "../mixins";
+
+#sales {
+    padding: $sales_padding;
+    position: relative;
+    height:472.6px;
+    margin-top: 2px;
+}
+
+.sales__background__top,.sales__background__bottom{
+    background-color: $red;
+}
+
+.sales__background {
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:100%;
+}
+
+.sales__background__bottom {
+
+    height:296px;
+    width: 100%;
+}
+
+.sales__background__top {
+    height: 164px;
+    width: 100%;
+    transform: skewY(1.5deg);
+    margin-top: -44px;
+}
+
+.sales__header {
+    padding : $sales__header__padding;
+    height:34px;
+    position: relative;
+}
+.sales__title,.sales__filters {
+    display: inline-block;
+}
+
+.sales__title {
+    @include center(false,true);
+    position: absolute;
+    font-weight: bold;
+    color: $white;
+    font-size: $sales_title_size;
+}
+
+.sales__filters {
+    float: right;
+}
+
+.sales__footer {
+    margin-top: 41px;
+}
+
+.sales__graph {
+    margin-left: -2px;
+    margin-top: 1px;
+}
+
+
+.filter__content--sales {
+    padding: 1.5px;
+}
+
+.select__wrapper--sales {
+    padding-left: 6px;
+    padding-bottom: 6px;
+    padding-top: 6px;
+}

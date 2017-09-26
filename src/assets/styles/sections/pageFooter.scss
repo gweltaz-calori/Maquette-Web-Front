@@ -1,0 +1,47 @@
+@import "../variables";
+@import "../mixins";
+
+.page__footer {
+    background-color: $blue;
+    margin-top: 84px;
+    padding-top: 49px;
+    padding-bottom: 45px;
+}
+
+.page__footer__nav {
+    display: inline-block;
+    vertical-align: top;
+    min-width: 137px;
+
+}
+
+.nav__title {
+    font-size: $footer_nav_size;
+    font-weight: bold;
+    color: $white;
+}
+
+.nav__items {
+    margin-top: 33px;
+}
+
+.page__footer__nav:not(:last-child) {
+    margin-right: 89px;
+}
+
+.nav__items__item__name {
+    font-size: $footer_nav_size;
+    color: $semi_transparent_white;
+    line-height: 20px;
+    transition: color 0.4s;
+
+}
+
+.nav__items__item__name:hover {
+    color: $white;
+}
+
+
+.nav__items__item__name.nav__items__item__name--active {
+    color: $white;
+}

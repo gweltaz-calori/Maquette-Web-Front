@@ -1,0 +1,56 @@
+@import "../variables";
+@import "../mixins";
+
+#news {
+    height: 443px;
+    position: relative;
+    padding:$news_padding;
+}
+
+.news__header {
+    margin-bottom: 51px;
+
+}
+
+.news__header__title {
+    font-size: $new_title_size;
+    color: $light_black;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+    display: block;
+    margin: 1px -2px;
+
+}
+
+.news__content {
+    width: 100%;
+}
+
+.news__background__top,.news__background__bottom{
+    background-color:$light_green;
+}
+
+
+.news__background {
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:100%;
+}
+
+.news__background__top {
+
+    height:418px;
+    width:100%;
+    transform:skewY(-1.7deg);
+
+}
+
+
+.news__background__bottom {
+    margin-top: -171px;
+    height:202px;
+    width: 100%;
+}

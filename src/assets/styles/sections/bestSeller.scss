@@ -1,0 +1,11 @@
+@import "../variables";
+@import "../mixins";
+
+#best-seller {
+    height: 400px;
+    width: 100%;
+}
+
+.best-seller__filters {
+    float: right;
+}

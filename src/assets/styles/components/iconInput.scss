@@ -1,0 +1,20 @@
+@import "../variables";
+@import "../mixins";
+
+.icon-input {
+    border : solid $clear_grey 1px;
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+}
+
+.icon-input__icon {
+    margin-left: 9px;
+    vertical-align: middle;
+}
+
+.icon-input__value {
+    font-size: $icon_input_size;
+    color: $light_grey;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 7px;
+}

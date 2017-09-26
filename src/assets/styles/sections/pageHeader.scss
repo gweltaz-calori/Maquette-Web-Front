@@ -1,0 +1,112 @@
+@import "../variables";
+@import "../mixins";
+
+.page__header {
+    height:$header_height;
+    width: 100%;
+    background-color: $blue;
+    border-bottom: $white solid 1px;
+    position: absolute;
+    top:0;
+    left:0;
+}
+
+.page__header__content {
+    height:100%;
+    padding-top: 4px;
+}
+
+.page__header__navigation {
+    height:100%;
+    display: inline-block;
+    position: relative;
+}
+
+.page__header__menu {
+    @include center(false, true)
+}
+
+.page__header__menu__item {
+    display: inline-block;
+
+    margin-right: 23.4px;
+    position: relative;
+}
+
+.page__header__menu__item__link {
+    color: $semi_transparent_white;
+    font-size: $header_font_size;
+}
+
+
+.page__header__menu__item:after {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    height:4px;
+    background-color: transparent;
+    width: 100%;
+    transform: scaleX(0);
+    transition : background-color,transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+
+.page__header__menu__item:hover:after,.page__header__menu__item.page__header__menu__item--active:after {
+    background-color: white;
+    transform: scaleX(1);
+}
+
+.page__header__menu__item--active .page__header__menu__item__link {
+    color: $white;
+}
+
+.page__header__session {
+    @include center(false, true);
+    float: right;
+}
+
+.page__header__divider__wrapper {
+    display: inline-block;
+    padding: 0 14px;
+
+}
+
+.page__header__divider {
+    @include center(false, true);
+    height:16px;
+    position: absolute;
+    background-color: $light_grey;
+}
+
+.page__header__session__user,.page__header__session__logout {
+    color: $white;
+    display: inline-block;
+    font-size: $header_font_size;
+}
+
+.page__header__session__user__name {
+    margin-right: 5px;
+}
+
+.page__header__session__logout {
+    margin-right: -1.5px;
+}
+
+.page__header__session_add {
+    background-color: $light_green;
+    color: $black;
+    border-radius: 50%;
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    text-align: center;
+    margin-right: 1.52px;
+    font-size: 12px;
+    background-image: url('../../icons/plus.png');
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+

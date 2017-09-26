@@ -1,0 +1,29 @@
+@import "../variables";
+@import "../mixins";
+
+.filter__order {
+    width: 112px;
+}
+
+.filter__search {
+    width: 257px;
+}
+
+.products__footer {
+    position: relative;
+    height: 30px;
+    margin-top: 37px;
+}
+
+.products__footer__divider {
+    width: 100%;
+    background-color: $grey;
+}
+
+.view-products {
+    @include center(true,true);
+    position: absolute;
+    width: 169px;
+    height:33px;
+    background-color: $white;
+}

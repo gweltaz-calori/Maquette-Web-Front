@@ -1,0 +1,61 @@
+@import "../variables";
+@import "../mixins";
+
+.button {
+    border: solid $white 1px;
+    display: block;
+    padding: 9.5px;
+}
+
+.button__wrapper {
+    @include center(false,true);
+    height:100%;
+    position: relative;
+}
+
+.button__content {
+    @include center(false, true);
+    position: absolute;
+    color: $white;
+    font-size: $button_text_size;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.button--danger {
+    border-color: $red;
+}
+
+.button--dark {
+    border-color: $light_grey;
+}
+
+.button--normal {
+    border-color: $light_black;
+}
+
+.button--light-dark {
+    border-color: $grey;
+}
+
+.button__content--dark {
+    color: $light_grey;
+}
+
+.button__content.button__content--normal {
+    color: $light_black;
+}
+
+.button__icon {
+    @include center(false, true);
+    right:0;
+    position: absolute;
+}
+
+.button__icon.button__icon--bottom {
+    left:0;
+}
+
+.button__content.button__content--bottom {
+    right:0;
+}

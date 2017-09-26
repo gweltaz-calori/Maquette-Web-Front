@@ -1,0 +1,202 @@
+@import "../variables";
+@import "../mixins";
+
+#order {
+    padding: $order_padding;
+}
+/* common list style*/
+.list__title {
+    color: $light_grey;
+    font-size: $order_list_title_size;
+    margin-bottom: 22px;
+    margin-left: -1px;
+    margin-top: 1px;
+}
+
+.list__content__item__wrapper {
+    position: relative;
+}
+
+.list__content__item__header,.list__content,.list__footer {
+    display: inline-block;
+    vertical-align: middle;
+
+}
+
+.list__content__item__header {
+    margin-right: 14px;
+}
+
+.list__content {
+    vertical-align: top;
+}
+
+.list__footer__view {
+    @include center(false,true);
+    width: 100px;
+    height: 32px;
+    position: absolute;
+    right: 0;
+}
+
+.list__content__item {
+    /*padding: 24px 0;*/
+    height: 99px;
+    box-sizing: content-box;
+    border-top: solid transparent 1px;
+    border-bottom: solid transparent 1px;
+}
+
+.order {
+    width: 436px;
+}
+
+.list__content__item:not(:last-child) {
+    border-bottom: 1px solid $grey;
+}
+
+.list__content__item__wrapper {
+    @include center(false,true);
+}
+
+.list__content__item__name {
+
+    font-size: $order_list_item_name_size;
+    color: $light_grey;
+    margin-top: -1px;
+
+}
+
+/*order*/
+.order__content__date {
+    font-size: 11px;
+    color: $light_grey;
+    margin-bottom: 14px;
+}
+
+.order__content__status {
+    font-size: $order_status_size;
+    font-weight: bold;
+}
+
+.order__profile {
+    position: relative;
+    width: 89px;
+}
+
+.order__profile__icon,.order__profile__status,.formation__picture {
+    border-radius: 50%;
+    height:50px;
+    width: 50px;
+    display: inline-block;
+}
+
+.order__profile__icon {
+    border: solid $grey 1px;
+}
+
+.order__profile__status {
+    background-color: transparent;
+    position: absolute;
+    left: 39px;
+    top:0;
+
+}
+
+.order__profile__status::after {
+    content: '';
+    position: absolute;
+    background-position: center center;
+    background-repeat: no-repeat;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+}
+
+
+.order__profile__status.order__profile__status--progress {
+    background-color: $accent_grey;
+}
+
+.order__profile__status.order__profile__status--progress::after {
+    background-image: url("../../icons/truck.png");
+}
+
+.order__profile__status.order__profile__status--danger {
+    background-color: $red;
+}
+
+.order__profile__status.order__profile__status--danger::after {
+    background-image: url("../../icons/info.png");
+}
+
+.order__profile__status.order__profile__status--success {
+    background-color: $light_green;
+}
+
+.order__profile__status.order__profile__status--success::after {
+    background-image: url("../../icons/tick.png");
+}
+
+.order__content__status.order__content__status--progress {
+    color: $light_grey;
+}
+
+.order__content__status.order__content__status--danger {
+    color: $red;
+}
+
+
+.order__content__status.order__content__status--success {
+    color: $light_green;
+}
+
+.order__formations {
+    margin-left: 46px;
+}
+
+.order__formations,.order__history {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.order__history__footer {
+    position: relative;
+    margin-top: 10px;
+    height:27px;
+}
+
+.order__history__footer__divider {
+    width: 100%;
+    background-color: $accent_grey;
+}
+
+.order__history__view-history {
+    @include center(true,true);
+    position: absolute;
+    height: 33px;
+    width: 128px;
+    background-color: $white;
+}
+
+/*Formations*/
+.formation__group {
+    font-size:$formation_group_size;
+    color: $light_grey;
+    line-height: 0.9;
+    margin-bottom: 5px;
+
+}
+
+.formation__name {
+    font-size:$formation_title_size;
+    font-weight:bold;
+    margin-bottom: 16px;
+    color: $light_grey;
+}
+
+.formation__status {
+    font-size:$formation_status_size;
+    color: $clear_grey;
+}

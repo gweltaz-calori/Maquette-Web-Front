@@ -1,0 +1,156 @@
+@import "variables";
+@import "mixins";
+
+.wrapper {
+    width: $wrapper_width;
+    height:100%;
+
+}
+
+.wrapper.wrapper--centered {
+    @include center(true, false);
+}
+
+
+.wrapper--article {
+    padding: $wrapper_padding;
+}
+
+
+main {
+    margin-top: $header_height;
+}
+
+.products {
+    padding: 43px 0 ;
+}
+
+.products__header {
+    margin-bottom: 44px;
+
+}
+
+.products__header__filter {
+    display: inline-block;
+    float: right;
+}
+
+.products__header__filter_label {
+    margin-right: 10px;
+    font-size:$product_filter_size;
+}
+
+.products__header__filter_input {
+    height: 28px;
+}
+
+.products__header__title {
+    color: $light_grey;
+    font-size:$product_title_size;
+    display: inline-block;
+    margin-left: -2.2px;
+    margin-top: 1px;
+}
+
+/*Product*/
+
+.products__content__list-item {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.products__content__list-item:not(:last-child) {
+    margin-right: 1px;
+}
+
+.product {
+    width: 180px;
+    position: relative;
+}
+
+.product__header {
+    height:105px;
+    background-color: $semi_light_grey;
+}
+
+.product__header__image {
+    @include center(true, true);
+    height:104px;
+}
+
+.product__content {
+    background-color: $darker_light_grey;
+    height:115px;
+    padding: 13px 14.6px;
+
+}
+
+.product__content__name,.product__content__color {
+    color: $light_grey;
+}
+
+.product__content__name {
+    font-size: 16px;
+    font-weight:bold;
+    margin-bottom: 7px;
+    max-width: 143px;
+    line-height: 19.3px;
+}
+
+.product__content__color {
+    font-size: 11px;
+    font-weight:400;
+}
+
+.product__footer {
+    position: absolute;
+    bottom:0;
+    border-bottom:solid $red 4px;
+    width:100%;
+}
+
+.product__footer__stock {
+    color: $red;
+    position: absolute;
+    right: 10px;
+    bottom: 4px;
+    font-weight:bold;
+    font-size:11px;
+}
+
+.product__footer.product__footer--disabled {
+    border-bottom:solid $grey 4px;
+}
+
+.product__footer.product__footer--disabled .product__footer__stock {
+    color: $disabled_grey;
+}
+
+
+/*filters*/
+
+.filter {
+    display: inline-block;
+    margin-left: 22px;
+}
+
+.filter__label {
+    margin-right: 6px;
+    font-size: $filter_label_font_size;
+}
+
+.filter__label.filter__label--accent {
+    color: $white;
+}
+
+.filter__label.filter__label--primary {
+    color: $light_grey;
+}
+
+.filter__content,.filter__label {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+

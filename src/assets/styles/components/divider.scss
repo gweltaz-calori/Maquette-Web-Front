@@ -1,0 +1,13 @@
+@import "../variables";
+
+.divider {
+    display: inline-block;
+}
+
+.divider--vertical {
+    width: 1px;
+}
+
+.divider--horizontal {
+    height: 1px;
+}

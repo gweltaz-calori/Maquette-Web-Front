@@ -1,0 +1,60 @@
+@import "../variables";
+@import "../mixins";
+
+.select__wrapper {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: transparent;
+    border: 0;
+    position: relative;
+    padding:6px 8px;
+    font-size: $select_option_size;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+    padding-right: 39px;
+}
+
+.select {
+    position: relative;
+    width: 121px;
+    overflow: hidden;
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+}
+
+.select.select--primary {
+    border : solid $clear_grey 1px;
+}
+
+.select.select--primary .select__wrapper {
+    color: $light_grey;
+}
+
+.select.select--accent {
+    border : solid $white 1px;
+}
+
+.select.select--accent .select__wrapper {
+    color: $white;
+}
+
+.select:after {
+    @include center(false,true);
+    content: "";
+    position: absolute;
+    height:20px;
+    width: 20px;
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    right: 4px;
+    pointer-events: none;
+}
+
+.select.select--accent:after {
+    background-image: url("../../icons/select_white.png");
+}
+
+.select.select--primary:after {
+    background-image: url("../../icons/select_primary.png");
+}

@@ -1,0 +1,51 @@
+@import "../variables";
+@import "../mixins";
+
+
+#hero {
+    height:400px;
+    background-color: $blue;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero__wrapper,.hero__article {
+    height:100%;
+}
+
+.hero__article {
+    position: relative;
+}
+
+.hero__article__header__title {
+    font-weight: bold;
+    font-size: $hero_title_font_size;
+    margin-bottom: 15px;
+    color: $white;
+}
+
+.hero__article__header__description {
+    font-size: $hero_paragraph_font_size;
+    max-width: 120px;
+    color: $white;
+}
+
+
+.hero__article__footer {
+    position: absolute;
+    bottom: 2px;
+}
+
+
+.hero__article__button {
+    width: 150px;
+    height: 33px;
+}
+
+.hero__background {
+    @include center(true, false);
+    position: absolute;
+    width: 2103px;
+    top: -40px;
+
+}

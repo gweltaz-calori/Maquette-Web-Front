@@ -1,0 +1,115 @@
+@import "../mixins";
+@import "../variables";
+
+.slider {
+    width: 100%;
+}
+
+.slider__content,.slider__slide,.slider__control,.slider  {
+    display: inline-block;
+}
+
+.slider__interface {
+    display:  block;
+    margin-bottom: 40px;
+}
+
+.slider__wrapper {
+    @include center(true,false);
+    display: inline-block;
+}
+
+/*indicators*/
+
+.slider__indicators {
+    display: block;
+}
+
+.slider__indicators__wrapper {
+    display: inline-block;
+    @include center(true,false);
+}
+
+.slider__indicators__indicator {
+    border-radius: 50%;
+    border:solid $white 1px;
+    height:39px;
+    width: 39px;
+    overflow: hidden;
+    position: relative;
+    margin: 0 5px;
+}
+
+.slider__indicators__indicator.slider__indicators__indicator--active {
+    border:solid $black 1px;
+}
+
+.slider__indicators__indicator__picture {
+    position: absolute;
+    width: 134px;
+    @include center(true,true);
+    position: absolute;
+}
+
+.slider__control {
+    @include center(false,true);
+    position: absolute;
+}
+
+.slider__left-control {
+    left:0;
+}
+
+.slider__right-control {
+    right:0;
+}
+
+
+.slider__interface {
+
+}
+
+
+/* Slide */
+
+
+
+.slider__slide__header {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+    height:187px;
+    width: 353px;
+}
+
+.slider__slide__picture {
+    @include center(true,true);
+    position: absolute;
+    width:471px;
+}
+
+.slider__slide__content {
+    display: inline-block;
+    width: 390px;
+    vertical-align: middle;
+    padding-left: 40px;
+}
+
+.slider__slide__title {
+    margin-bottom: 21px;
+    font-size: $slider_title_size;
+    font-weight:normal;
+}
+
+.slider__slide__description {
+    margin-bottom: 30px;
+    font-size: $slider_description_size;
+    font-weight:normal;
+}
+
+.slider__slide__order {
+    height: 33px;
+    width: 150px;
+}
+

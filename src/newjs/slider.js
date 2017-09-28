@@ -23,6 +23,9 @@ export default class Slider {
             this.initEvents()
             this.initElements()
             this.initStyle()
+            Bus.$emit('sliderMoved',{
+                currentSlide : 0
+            })
 
         });
     }

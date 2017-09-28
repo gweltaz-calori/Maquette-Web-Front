@@ -47,6 +47,7 @@
     position: relative;
     margin: 0 5px;
     transition: transform 0.4s;
+    cursor: pointer;
 }
 
 .slider__indicators__indicator.slider__indicators__indicator--active {
@@ -64,6 +65,7 @@
 .slider__control {
     @include center(false,true);
     position: absolute;
+    cursor: pointer;
 }
 
 .slider__left-control {

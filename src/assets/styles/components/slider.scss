@@ -6,8 +6,10 @@
 }
 
 .slider__content {
+
     width: 750px;
     height: 187px;
+    perspective: 1600px;
 
 }
 
@@ -44,10 +46,12 @@
     overflow: hidden;
     position: relative;
     margin: 0 5px;
+    transition: transform 0.4s;
 }
 
 .slider__indicators__indicator.slider__indicators__indicator--active {
     border:solid $black 1px;
+    transform: scale(1.1,1.1);
 }
 
 .slider__indicators__indicator__picture {
@@ -73,7 +77,12 @@
 /* Slide */
 
 .slider__slide {
+    @include center(true,false);
+    opacity: 0;
     position: absolute;
+    width: 750px;
+    background-color: $light_green;
+    /*box-shadow: 0 -8px 20px 0px rgba(0,0,0,.06);*/
 
 }
 
@@ -88,8 +97,9 @@
     overflow: hidden;
     display: inline-block;
     vertical-align: middle;
-    height:187px;
+    height: 178px;
     width: 353px;
+
 }
 
 .slider__slide__picture {
@@ -103,6 +113,7 @@
     width: 390px;
     vertical-align: middle;
     padding-left: 40px;
+    margin-top: -2px;
 }
 
 .slider__slide__title {

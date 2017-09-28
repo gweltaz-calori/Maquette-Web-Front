@@ -14,17 +14,26 @@ export default class SliderIndicators {
             this.indicators.push(newIndicator)
         }
 
+
+
         this.render()
+    }
+
+    initEvents() {
+        for(let indicator of this.indicators) {
+            indicator.initEvents()
+        }
     }
 
     render() {
 
         this.el.classList.add('slider__indicators')
 
+
         this.template = `
           
             <div class="slider__indicators__wrapper">
-                ${this.indicators.map((indicator, index) => indicator.el.innerHTML.trim()).join('')}
+                ${this.indicators.map((indicator, index) => indicator.el.outerHTML.trim()).join('')}
             </div>
             
             `

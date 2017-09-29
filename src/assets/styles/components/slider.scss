@@ -52,7 +52,7 @@
 
 .slider__indicators__indicator.slider__indicators__indicator--active {
     border:solid $black 1px;
-    transform: scale(1.1,1.1);
+    transform: scale3d(1.1,1.1,1.1);
 }
 
 .slider__indicators__indicator__picture {
@@ -139,11 +139,21 @@
 
 @media all and (max-width: $tablet){
 
+    .slider__content {
+        width: 100%;
+    }
+
     .slider__slide {
         width: auto;
+    }
+
+    .slider__control {
+        display: none;
     }
 
     .slider__slide__content {
         display: none;
     }
+
+
 }

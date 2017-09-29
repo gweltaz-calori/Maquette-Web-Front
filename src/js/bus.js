@@ -11,3 +11,5 @@ export default class Bus {
 }
 
 Bus.obj = document.createElement('div');
+
+

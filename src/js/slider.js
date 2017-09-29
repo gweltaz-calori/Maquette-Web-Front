@@ -58,8 +58,8 @@ export default class Slider {
      */
     initEvents() {
 
-        this.left__slider__control.addEventListener('click', this.move.bind(this, -1));
-        this.right__slider__control.addEventListener('click', this.move.bind(this, 1));
+        this.left__slider__control.addEventListener('click', () => this.move( -1));
+        this.right__slider__control.addEventListener('click', () => this.move( 1));
 
     }
 
@@ -129,7 +129,7 @@ export default class Slider {
             },
             onComplete: () => {
 
-                this.slides.move(this.currentSlide, this.slides.length - 1); //move the current slide at the end
+                this.slides.move(this.currentSlide, this.slides.length - 1);
                 this.animating = false;
 
             }
@@ -202,60 +202,41 @@ export default class Slider {
         let slider = document.createElement("div");
         slider.classList.add("slider");
 
-        this.left__slider__control = document.createElement('button');
-        this.left__slider__control.classList.add('slider__control');
-        this.left__slider__control.classList.add('slider__left-control');
+        this.template = `
+            
+                <button class="slider__control slider__left-control">
+                    <img src="./icons/components/slider/left_control.png" alt="">
+                </button>
+                <div class="slider__wrapper">
+                    <div class="slider__interface">
+                        <div class="slider__content">
+                             <!-- sliderItems -->
+                        </div>
+                    </div>
+                    <!-- sliderIndicators -->
+                </div>
+                <button class="slider__control slider__right-control">
+                    <img src="./icons/components/slider/right_control.png" alt="">
+                </button>
+           
+        
+        `;
 
-        let slider__left__image__control = document.createElement('img');
-        slider__left__image__control.setAttribute('src', './icons/components/slider/left_control.png');
-
-        let slider__wrapper = document.createElement('div');
-        slider__wrapper.classList.add('slider__wrapper');
-
-        let slider__interface = document.createElement('div');
-        slider__interface.classList.add('slider__interface');
-
-        let slider__content = document.createElement('div');
-        slider__content.classList.add('slider__content');
-
-        this.right__slider__control = document.createElement('button');
-        this.right__slider__control.classList.add('slider__control');
-        this.right__slider__control.classList.add('slider__right-control');
-
-        let slider__right__image__control = document.createElement('img');
-        slider__right__image__control.setAttribute('src', './icons/components/slider/right_control.png');
-
-
-        /*left control*/
-
-        this.left__slider__control.appendChild(slider__left__image__control);
-
-
-        /*slider_wrapper*/
-
-        slider__wrapper.appendChild(slider__interface);
-        slider__wrapper.appendChild(this.sliderIndicators.el);
-        slider__interface.appendChild(slider__content);
-
-        /* slider content */
+        slider.innerHTML = this.template;
 
         for (let slide of this.slides) {
-            slider__content.appendChild(slide.el);
+            slider.querySelector('.slider__content').appendChild(slide.el);
         }
 
-        /*right control*/
+        slider.querySelector('.slider__wrapper').appendChild(this.sliderIndicators.el);
 
-        this.right__slider__control.appendChild(slider__right__image__control);
-
-
-        /* slider */
-
-        slider.appendChild(this.left__slider__control);
-        slider.appendChild(slider__wrapper);
-        slider.appendChild(this.right__slider__control);
+        this.right__slider__control =  slider.querySelector('.slider__right-control');
+        this.left__slider__control =  slider.querySelector('.slider__left-control');
 
 
         this.el.appendChild(slider);
+
+
     }
 }
 

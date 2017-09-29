@@ -67,6 +67,11 @@
 
 }
 
+.order__content {
+    vertical-align: middle;
+    display: inline-block;
+}
+
 /*order*/
 .order__content__date {
     font-size: 11px;
@@ -206,6 +211,11 @@
     .order__formations, .order__history {
         margin-left: 0;
         @include center(true,false);
+        width: 100%;
+    }
+
+    .order,.orders,.formations {
+        width: 100%;
     }
 
     .order__formations {
@@ -216,4 +226,11 @@
         text-align: center;
     }
 
+}
+
+@media all and (max-width: $phone){
+
+    .list__footer {
+        display: none;
+    }
 }

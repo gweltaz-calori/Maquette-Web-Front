@@ -16,14 +16,14 @@ export default class SliderIndicator {
      * Init all events
      */
     initEvents() {
-        this.el.addEventListener('click', this.move.bind(this));
+        this.el.addEventListener('click', () => this.move());
     }
 
     /**
      * Init all bus events
      */
     initBusEvents() {
-        Bus.$on('sliderMoved', this.sliderMoved.bind(this));
+        Bus.$on('sliderMoved', (data) => this.sliderMoved(data));
     }
 
     /**
@@ -49,18 +49,14 @@ export default class SliderIndicator {
         });
     }
 
-    /**
-     * render indicator
-     */
+
     render() {
 
         this.el.classList.add('slider__indicators__indicator');
-
-        let slider__indicators__indicator__picture = document.createElement('img');
-        slider__indicators__indicator__picture.classList.add('slider__indicators__indicator__picture');
-        slider__indicators__indicator__picture.setAttribute('src',this.props.image);
-
-        this.el.appendChild(slider__indicators__indicator__picture)
+        this.el.innerHTML = `
+            <img class="slider__indicators__indicator__picture" src="${this.props.image}" alt="">
+            
+        `
 
     }
 }

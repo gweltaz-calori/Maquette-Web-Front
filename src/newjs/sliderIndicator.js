@@ -8,15 +8,27 @@ export default class SliderIndicator {
         this.props = props;
 
         this.render();
-        this.initEvents()
+        this.initEvents();
+        this.initBusEvents();
     }
 
+    /**
+     * Init all events
+     */
     initEvents() {
-
         this.el.addEventListener('click', this.move.bind(this));
+    }
+
+    /**
+     * Init all bus events
+     */
+    initBusEvents() {
         Bus.$on('sliderMoved', this.sliderMoved.bind(this));
     }
 
+    /**
+     * Callback when slider moved
+     */
     sliderMoved(data) {
 
         if (data.detail.currentSlide == this.props.id) {
@@ -28,12 +40,18 @@ export default class SliderIndicator {
 
     }
 
+    /**
+    * emit that slider moved
+    */
     move() {
         Bus.$emit('sliderMovedIndicator', {
             currentSlide: this.props.id
         });
     }
 
+    /**
+     * render indicator
+     */
     render() {
 
         this.el.classList.add('slider__indicators__indicator');

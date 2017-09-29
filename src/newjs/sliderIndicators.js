@@ -8,17 +8,25 @@ export default class SliderIndicators {
         this.props = props;
         this.indicators = [];
 
-        for (let slide of this.props.slides) {
+        this.init();
+    }
 
+    /**
+     * Init everything and indicators
+     */
+    init() {
+
+        for (let slide of this.props.slides) {
             let newIndicator = new SliderIndicator(slide.props);
             this.indicators.push(newIndicator);
         }
 
-
         this.render();
     }
 
-
+    /**
+     * Render a group of sliderIndicators
+     */
     render() {
 
         this.el.classList.add('slider__indicators');
@@ -30,9 +38,7 @@ export default class SliderIndicators {
             slider__indicators__wrapper.appendChild(indicator.el);
         }
 
-
         this.el.appendChild(slider__indicators__wrapper);
-
 
 
     }

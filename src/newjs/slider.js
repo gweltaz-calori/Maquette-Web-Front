@@ -2,6 +2,7 @@ import SliderItem from "./sliderItem";
 import SliderIndicators from "./sliderIndicators";
 import {TimelineMax, TweenMax} from 'gsap';
 import Bus from "./bus";
+import './prototypes';
 
 export default class Slider {
 
@@ -10,26 +11,28 @@ export default class Slider {
         this.el = document.querySelector(options.el);
         this.slidesUrl = options.slidesUrl;
         this.slides = [];
-        this.htmlSlides = [];
         this.sliderIndicators = null;
         this.currentSlide = 0;
-        this.currentSlideValue = null;
         this.animating = false;
 
+        // promise pour gérer l'asynchrone
         this.getSlides().then(slides => {
 
             this.initComponents(slides);
             this.render();
             this.initEvents();
-            this.initElements();
+            this.initBusEvents();
             this.initStyle();
+
             Bus.$emit('sliderMoved', {
                 currentSlide: 0
             });
 
         });
     }
-
+    /**
+     * Get slides in ajax
+     */
     getSlides() {
 
         return new Promise((resolve, reject) => {
@@ -49,23 +52,40 @@ export default class Slider {
         });
     }
 
+    /**
+     * Init events
+     */
     initEvents() {
+
         this.left__slider__control.addEventListener('click', this.move.bind(this, -1));
         this.right__slider__control.addEventListener('click', this.move.bind(this, 1));
 
+    }
+
+    initBusEvents() {
         Bus.$on('sliderMovedIndicator', this.sliderMovedIndicator.bind(this));
-
     }
 
+    /**
+     * Set default style for active slide
+     * @param {Object} data
+     */
     initStyle() {
-        this.htmlSlides[this.currentSlide].style.opacity = 1;
+
+        TweenMax.set(this.slides[this.currentSlide].el, {
+            autoAlpha: 1
+        });
+
     }
 
+    /**
+     * Create associations with components
+     * @param {Object} data
+     */
     initComponents(slides) {
 
         slides.forEach((slide, index) => {
             slide['id'] = index;
-
             let newSlide = new SliderItem(slide);
             this.slides.push(newSlide);
         });
@@ -74,21 +94,25 @@ export default class Slider {
         this.sliderIndicators = new SliderIndicators({
             slides: this.slides
         });
+
     }
 
-    initElements() {
-        this.htmlSlides = [...this.el.querySelectorAll('.slider__slide')].reverse();
-        for (let slide in this.htmlSlides) {
-            this.slides[slide].el = this.htmlSlides[slide];
-        }
-    }
-
+    /**
+     * Callback for an event emitter from indicator
+     * @param {Object} data
+     */
     sliderMovedIndicator(data) {
+
         let index = this.slides.findIndex(slide => slide.props.id == data.detail.currentSlide);
         this.slides.move(index, 1);
         this.move(1);
+
     }
 
+    /**
+     * Move in the given direction
+     * @param {Number} dir
+     */
     move(dir) {
 
         if (this.animating)
@@ -129,7 +153,7 @@ export default class Slider {
 
             maxIndex--;
             tl.to(this.slides[i].el, 0.8, {
-                opacity: 1,
+                autoAlpha: 1,
                 y: translateY,
                 scale: scale,
                 rotationX: rotateX,
@@ -145,7 +169,7 @@ export default class Slider {
 
         tl.to(this.slides[this.currentSlide].el, 0.6, {
             z: 300,
-            opacity: 0,
+            autoAlpha: 0,
             y: 200,
             ease: Circ.easeInOut,
             clearProps: 'transform',
@@ -161,7 +185,7 @@ export default class Slider {
                 y: 0,
                 scale: 1,
                 rotationX: 0,
-                opacity: opacity,
+                autoAlpha: opacity,
                 ease: Power2.easeInOut,
                 clearProps: 'transform'
             }, 1);
@@ -169,6 +193,10 @@ export default class Slider {
 
     }
 
+    /**
+     * Render the whole slider
+     *
+     */
     render() {
 
         let slider = document.createElement("div");
@@ -179,7 +207,7 @@ export default class Slider {
         this.left__slider__control.classList.add('slider__left-control');
 
         let slider__left__image__control = document.createElement('img');
-        slider__left__image__control.setAttribute('src','./icons/components/slider/left_control.png');
+        slider__left__image__control.setAttribute('src', './icons/components/slider/left_control.png');
 
         let slider__wrapper = document.createElement('div');
         slider__wrapper.classList.add('slider__wrapper');
@@ -195,7 +223,7 @@ export default class Slider {
         this.right__slider__control.classList.add('slider__right-control');
 
         let slider__right__image__control = document.createElement('img');
-        slider__right__image__control.setAttribute('src','./icons/components/slider/right_control.png');
+        slider__right__image__control.setAttribute('src', './icons/components/slider/right_control.png');
 
 
         /*left control*/
@@ -211,10 +239,9 @@ export default class Slider {
 
         /* slider content */
 
-        for(let slide of this.slides) {
-            slider__content.appendChild(slide.el)
+        for (let slide of this.slides) {
+            slider__content.appendChild(slide.el);
         }
-
 
         /*right control*/
 
@@ -228,17 +255,7 @@ export default class Slider {
         slider.appendChild(this.right__slider__control);
 
 
-        this.el.appendChild(slider)
+        this.el.appendChild(slider);
     }
 }
 
-Array.prototype.move = function (old_index, new_index) {
-    if (new_index >= this.length) {
-        var k = new_index - this.length;
-        while ((k--) + 1) {
-            this.push(undefined);
-        }
-    }
-    this.splice(new_index, 0, this.splice(old_index, 1)[0]);
-    return this; // for testing purposes
-};

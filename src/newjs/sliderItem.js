@@ -8,7 +8,12 @@ export default class SliderItem {
 
     }
 
+
+    /**
+     * Render a slider item
+     */
     render() {
+
         this.el.classList.add('slider__slide');
 
         let slider__slide__header = document.createElement('header');

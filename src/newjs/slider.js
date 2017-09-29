@@ -30,6 +30,7 @@ export default class Slider {
 
         });
     }
+
     /**
      * Get slides in ajax
      */
@@ -104,7 +105,7 @@ export default class Slider {
     sliderMovedIndicator(data) {
 
         let index = this.slides.findIndex(slide => slide.props.id == data.detail.currentSlide);
-        this.slides.move(index, 1);
+        this.slides.move(index, 1); // change the position of the clicked slide to second position -> when animating he will go first
         this.move(1);
 
     }
@@ -115,7 +116,7 @@ export default class Slider {
      */
     move(dir) {
 
-        if (this.animating)
+        if (this.animating) //prevent spamming
             return;
 
         let tl = new TimelineMax({
@@ -128,8 +129,7 @@ export default class Slider {
             },
             onComplete: () => {
 
-                this.slides.move(this.currentSlide, this.slides.length - 1);
-
+                this.slides.move(this.currentSlide, this.slides.length - 1); //move the current slide at the end
                 this.animating = false;
 
             }

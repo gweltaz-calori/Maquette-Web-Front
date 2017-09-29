@@ -135,3 +135,15 @@
     width: 150px;
 }
 
+
+
+@media all and (max-width: $tablet){
+
+    .slider__slide {
+        width: auto;
+    }
+
+    .slider__slide__content {
+        display: none;
+    }
+}

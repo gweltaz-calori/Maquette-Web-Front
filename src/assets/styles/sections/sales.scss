@@ -73,3 +73,9 @@
     padding-bottom: 6px;
     padding-top: 6px;
 }
+
+@media all and (max-width: $tablet){
+    .sales__graph {
+        width: 100%;
+    }
+}

@@ -4,7 +4,6 @@
 .wrapper {
     width: $wrapper_width;
     height:100%;
-
 }
 
 .wrapper.wrapper--centered {
@@ -54,9 +53,11 @@ main {
 
 /*Product*/
 
+
 .products__content__list-item {
     display: inline-block;
     vertical-align: top;
+    width: 180px;
 }
 
 .products__content__list-item:not(:last-child) {
@@ -154,3 +155,40 @@ main {
 
 
 
+@media all and (max-width: $tablet){
+
+    .wrapper {
+        width : 100%;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .products__content_list {
+        width: 552px;
+        @include center(true,false);
+    }
+
+    .products__content__list-item {
+        display: block;
+        width: 72%;
+        margin: 5px 0;
+        @include center(true,false);
+    }
+
+    .product {
+        width: auto;
+    }
+
+    .product__header {
+        height:209px;
+    }
+
+    .product__header__image {
+        height: 144px;
+    }
+}
+
+
+@media all and (max-width: $phone){
+
+}

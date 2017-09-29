@@ -9,3 +9,10 @@
 .best-seller__filters {
     float: right;
 }
+
+
+@media all and (max-width: $tablet){
+    #best-seller {
+        height:auto;
+    }
+}

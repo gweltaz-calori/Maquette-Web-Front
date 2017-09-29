@@ -200,3 +200,20 @@
     font-size:$formation_status_size;
     color: $clear_grey;
 }
+
+@media all and (max-width: $tablet){
+
+    .order__formations, .order__history {
+        margin-left: 0;
+        @include center(true,false);
+    }
+
+    .order__formations {
+        margin-top: 59px;
+    }
+
+    .list__title {
+        text-align: center;
+    }
+
+}

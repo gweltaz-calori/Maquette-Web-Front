@@ -10,3 +10,4 @@ let productSlider = new Slider({
     slidesUrl : "./slides.json"
 });
 
+

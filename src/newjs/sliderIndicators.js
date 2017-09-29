@@ -4,41 +4,36 @@ export default class SliderIndicators {
 
     constructor(props) {
 
-        this.el = document.createElement('div')
-        this.props = props
-        this.indicators = []
+        this.el = document.createElement('div');
+        this.props = props;
+        this.indicators = [];
 
-        for(let slide of this.props.slides) {
+        for (let slide of this.props.slides) {
 
-            let newIndicator = new SliderIndicator(slide.props)
-            this.indicators.push(newIndicator)
+            let newIndicator = new SliderIndicator(slide.props);
+            this.indicators.push(newIndicator);
         }
 
 
-
-        this.render()
+        this.render();
     }
 
-    initEvents() {
-        for(let indicator of this.indicators) {
-            indicator.initEvents()
-        }
-    }
 
     render() {
 
-        this.el.classList.add('slider__indicators')
+        this.el.classList.add('slider__indicators');
+
+        let slider__indicators__wrapper = document.createElement('div');
+        slider__indicators__wrapper.classList.add('slider__indicators__wrapper');
+
+        for(let indicator of this.indicators) {
+            slider__indicators__wrapper.appendChild(indicator.el);
+        }
 
 
-        this.template = `
-          
-            <div class="slider__indicators__wrapper">
-                ${this.indicators.map((indicator, index) => indicator.el.outerHTML.trim()).join('')}
-            </div>
-            
-            `
+        this.el.appendChild(slider__indicators__wrapper);
 
-        this.el.innerHTML = this.template;
+
 
     }
 }

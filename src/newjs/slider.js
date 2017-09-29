@@ -1,31 +1,31 @@
 import SliderItem from "./sliderItem";
 import SliderIndicators from "./sliderIndicators";
-import {TimelineMax,TweenMax} from 'gsap'
+import {TimelineMax, TweenMax} from 'gsap';
 import Bus from "./bus";
 
 export default class Slider {
 
     constructor(options) {
 
-        this.el = document.querySelector(options.el)
-        this.slidesUrl = options.slidesUrl
-        this.slides = []
-        this.htmlSlides = []
-        this.sliderIndicators = null
-        this.currentSlide = 0
-        this.currentSlideValue = null
-        this.animating = false
+        this.el = document.querySelector(options.el);
+        this.slidesUrl = options.slidesUrl;
+        this.slides = [];
+        this.htmlSlides = [];
+        this.sliderIndicators = null;
+        this.currentSlide = 0;
+        this.currentSlideValue = null;
+        this.animating = false;
 
         this.getSlides().then(slides => {
 
-            this.initComponents(slides)
-            this.render()
-            this.initEvents()
-            this.initElements()
-            this.initStyle()
-            Bus.$emit('sliderMoved',{
-                currentSlide : 0
-            })
+            this.initComponents(slides);
+            this.render();
+            this.initEvents();
+            this.initElements();
+            this.initStyle();
+            Bus.$emit('sliderMoved', {
+                currentSlide: 0
+            });
 
         });
     }
@@ -50,152 +50,185 @@ export default class Slider {
     }
 
     initEvents() {
-        this.el.querySelector('.slider__left-control').addEventListener('click',this.move.bind(this,-1))
-        this.el.querySelector('.slider__right-control').addEventListener('click',this.move.bind(this,1))
+        this.left__slider__control.addEventListener('click', this.move.bind(this, -1));
+        this.right__slider__control.addEventListener('click', this.move.bind(this, 1));
 
-        Bus.$on('sliderMovedIndicator',this.sliderMovedIndicator.bind(this))
+        Bus.$on('sliderMovedIndicator', this.sliderMovedIndicator.bind(this));
 
-        this.sliderIndicators.initEvents()
     }
 
     initStyle() {
-        this.htmlSlides[this.currentSlide].style.opacity = 1
-
+        this.htmlSlides[this.currentSlide].style.opacity = 1;
     }
 
-    initComponents (slides) {
+    initComponents(slides) {
 
-        slides.forEach((slide,index) => {
-            slide['id'] = index
+        slides.forEach((slide, index) => {
+            slide['id'] = index;
 
-            let newSlide = new SliderItem(slide)
-            this.slides.push(newSlide)
-        })
+            let newSlide = new SliderItem(slide);
+            this.slides.push(newSlide);
+        });
 
 
         this.sliderIndicators = new SliderIndicators({
-            slides : this.slides
-        })
+            slides: this.slides
+        });
     }
 
     initElements() {
-        this.htmlSlides = [...this.el.querySelectorAll('.slider__slide')].reverse()
-        for(let slide in this.htmlSlides) {
-            this.slides[slide].el = this.htmlSlides[slide]
+        this.htmlSlides = [...this.el.querySelectorAll('.slider__slide')].reverse();
+        for (let slide in this.htmlSlides) {
+            this.slides[slide].el = this.htmlSlides[slide];
         }
     }
 
     sliderMovedIndicator(data) {
-        let index = this.slides.findIndex(slide => slide.props.id == data.detail.currentSlide)
-        this.slides.move(index,1 )
-        this.move(1)
+        let index = this.slides.findIndex(slide => slide.props.id == data.detail.currentSlide);
+        this.slides.move(index, 1);
+        this.move(1);
     }
 
     move(dir) {
 
-        if(this.animating)
+        if (this.animating)
             return;
 
         let tl = new TimelineMax({
 
-            onStart : () =>  {
-                Bus.$emit('sliderMoved',{
-                    currentSlide : this.slides[this.currentSlide + 1].props.id
-                })
+            onStart: () => {
+                Bus.$emit('sliderMoved', {
+                    currentSlide: this.slides[this.currentSlide + 1].props.id
+                });
                 this.animating = true;
             },
-            onComplete : () => {
+            onComplete: () => {
 
-                this.slides.move(this.currentSlide,this.slides.length - 1 )
+                this.slides.move(this.currentSlide, this.slides.length - 1);
 
                 this.animating = false;
 
             }
-        })
+        });
 
 
-        let translateY = 0
-        let scale = 1
-        let rotateX = -23
-        let maxIndex = this.slides.length -1;
+        let translateY = 0;
+        let scale = 1;
+        let rotateX = -23;
+        let maxIndex = this.slides.length - 1;
 
 
-
-        for(let i=0;i<this.slides.length;i++) {
-            tl.set(this.slides[i].el,{
-                zIndex  : maxIndex
+        for (let i = 0; i < this.slides.length; i++) {
+            tl.set(this.slides[i].el, {
+                zIndex: maxIndex
             });
             maxIndex--;
         }
 
-        for(let i=0;i<this.slides.length;i++) {
+        for (let i = 0; i < this.slides.length; i++) {
 
             maxIndex--;
-            tl.to(this.slides[i].el,0.8,{
-                opacity : 1,
-                y : translateY,
-                scale :scale,
-                rotationX : rotateX,
-                boxShadow : "rgba(0,0,0,.06) 0 -8px 20px 0px ",
+            tl.to(this.slides[i].el, 0.8, {
+                opacity: 1,
+                y: translateY,
+                scale: scale,
+                rotationX: rotateX,
+                boxShadow: "rgba(0,0,0,.06) 0 -8px 20px 0px ",
                 ease: Expo.easeOut,
-                clearProps : "boxShadow"
+                clearProps: "boxShadow"
 
-            },0.2)
+            }, 0.2);
 
-            translateY -= 70
-            scale -= 0.1
+            translateY -= 70;
+            scale -= 0.1;
         }
 
-        tl.to(this.slides[this.currentSlide].el,0.6,{
-            z : 300,
-            opacity : 0,
-            y : 200,
-            ease : Circ.easeInOut,
-            clearProps : 'transform',
+        tl.to(this.slides[this.currentSlide].el, 0.6, {
+            z: 300,
+            opacity: 0,
+            y: 200,
+            ease: Circ.easeInOut,
+            clearProps: 'transform',
 
-        })
+        });
 
 
-        for(let i=this.currentSlide+1;i<this.slides.length;i++) {
+        for (let i = this.currentSlide + 1; i < this.slides.length; i++) {
 
-            let opacity = this.currentSlide +1 == i ? 1 : 0
+            let opacity = this.currentSlide + 1 == i ? 1 : 0;
 
-            tl.to(this.slides[i].el,1,{
-                y : 0,
-                scale :1,
-                rotationX : 0,
-                opacity : opacity,
-                ease : Power2.easeInOut,
-                clearProps : 'transform'
-            },1)
+            tl.to(this.slides[i].el, 1, {
+                y: 0,
+                scale: 1,
+                rotationX: 0,
+                opacity: opacity,
+                ease: Power2.easeInOut,
+                clearProps: 'transform'
+            }, 1);
         }
 
     }
 
     render() {
-        this.rootEl = document.createElement("div")
-        this.rootEl.classList.add("slider")
-        this.template = `
-            
-                <button class="slider__control slider__left-control">
-                    <img src="./icons/components/slider/left_control.png" alt="">
-                </button>
-                <div class="slider__wrapper">
-                    <div class="slider__interface">
-                        <div class="slider__content">
-                             ${this.slides.map((slide, index) => slide.el.outerHTML.trim()).join('')}
-                        </div>
-                    </div>
-                    ${this.sliderIndicators.el.outerHTML}
-                </div>
-                <button class="slider__control slider__right-control">
-                    <img src="./icons/components/slider/right_control.png" alt="">
-                </button>
-           
-        
-        `
-        this.rootEl.innerHTML = this.template
-        this.el.appendChild(this.rootEl)
+
+        let slider = document.createElement("div");
+        slider.classList.add("slider");
+
+        this.left__slider__control = document.createElement('button');
+        this.left__slider__control.classList.add('slider__control');
+        this.left__slider__control.classList.add('slider__left-control');
+
+        let slider__left__image__control = document.createElement('img');
+        slider__left__image__control.setAttribute('src','./icons/components/slider/left_control.png');
+
+        let slider__wrapper = document.createElement('div');
+        slider__wrapper.classList.add('slider__wrapper');
+
+        let slider__interface = document.createElement('div');
+        slider__interface.classList.add('slider__interface');
+
+        let slider__content = document.createElement('div');
+        slider__content.classList.add('slider__content');
+
+        this.right__slider__control = document.createElement('button');
+        this.right__slider__control.classList.add('slider__control');
+        this.right__slider__control.classList.add('slider__right-control');
+
+        let slider__right__image__control = document.createElement('img');
+        slider__right__image__control.setAttribute('src','./icons/components/slider/right_control.png');
+
+
+        /*left control*/
+
+        this.left__slider__control.appendChild(slider__left__image__control);
+
+
+        /*slider_wrapper*/
+
+        slider__wrapper.appendChild(slider__interface);
+        slider__wrapper.appendChild(this.sliderIndicators.el);
+        slider__interface.appendChild(slider__content);
+
+        /* slider content */
+
+        for(let slide of this.slides) {
+            slider__content.appendChild(slide.el)
+        }
+
+
+        /*right control*/
+
+        this.right__slider__control.appendChild(slider__right__image__control);
+
+
+        /* slider */
+
+        slider.appendChild(this.left__slider__control);
+        slider.appendChild(slider__wrapper);
+        slider.appendChild(this.right__slider__control);
+
+
+        this.el.appendChild(slider)
     }
 }
 

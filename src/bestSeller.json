@@ -1,0 +1,33 @@
+[
+    {
+        "name" : "Nom du modèle un peu long",
+        "description" : "Manuel - Vert Gazon",
+        "image" : "./images/sections/products/product_a.png",
+        "stock" : 0
+    },
+    {
+        "name" : "Un autre modèle un autre nom",
+        "description" : "Semi-Automatique - Blanc",
+        "image" : "./images/sections/products/product_b.png",
+        "stock" : 1
+    },
+    {
+        "name" : "Nom du modèle toujours long",
+        "description" : "Semi-Automatique - Noir",
+        "image" : "./images/sections/products/product_c.png",
+        "stock" : 4
+    },
+    {
+        "name" : "Modèle Nombizarrelong",
+        "description" : "Manuel - Rouge",
+        "image" : "./images/sections/products/product_d.png",
+        "stock" : 4
+    },
+    {
+        "name" : "Dernier modèle de la liste",
+        "description" : "Automatique - Blanc",
+        "image" : "./images/sections/products/product_e.png",
+        "stock" : 5
+    }
+
+]

@@ -1,8 +1,8 @@
 import SliderItem from "./sliderItem";
 import SliderIndicators from "./sliderIndicators";
 import {TimelineMax, TweenMax} from 'gsap';
-import Bus from "./bus";
-import './prototypes';
+import Bus from "../../utils/bus";
+import '../../utils/prototypes';
 
 export default class Slider {
 

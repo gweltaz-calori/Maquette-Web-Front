@@ -53,6 +53,11 @@ main {
 
 /*Product*/
 
+.products__content_list--no-products {
+    text-align: center;
+    color: rgba(0,0,0,0.5);
+}
+
 
 .products__content__list-item {
     display: inline-block;

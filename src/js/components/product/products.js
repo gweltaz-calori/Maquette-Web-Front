@@ -9,6 +9,7 @@ export default class Products {
         this.productsEl = this.el.querySelector(options.productsEl);
         this.productsUrl = options.productsUrl;
         this.products = [];
+        this.computedProducts = []
         this.hydrating = false
 
         this.getProducts().then(products => {
@@ -17,7 +18,7 @@ export default class Products {
             this.render();
             this.init();
             this.initEvents();
-            //this.sortProducts(); //sort at load
+            this.sortProducts(false); //sort at load
 
         });
 
@@ -45,17 +46,30 @@ export default class Products {
         for(let product of products) {
             let productItem = new ProductItem(product);
             this.products.push(productItem);
+
         }
+        this.computedProducts = this.products
 
     }
 
     initEvents() {
+
         this.filter.addEventListener('change',() => this.sortProducts())
+        if(this.searchInput)
+            this.searchInput.addEventListener('input',() => this.searchProducts())
     }
 
-    sortProducts() {
-        this.products = this.products.sort((productA,productB) => this.compare(productA.props,productB.props))
-        this.render()
+    sortProducts(isAnimation = true) {
+        this.computedProducts = this.products.sort((productA,productB) => this.compare(productA.props,productB.props))
+        this.render(isAnimation)
+    }
+
+    searchProducts() {
+
+        let value = this.searchInput.value;
+        this.computedProducts = this.products.filter(product => product.props.name.toUpperCase().includes(value.toUpperCase()))
+
+        this.render(true)
     }
 
     compare(a,b) {
@@ -68,26 +82,32 @@ export default class Products {
 
     init() {
         this.filter = this.el.querySelector('.filter__order__sort')
+        this.searchInput = this.el.querySelector('.filter__search__order')
+
     }
 
+    //render + animations du sort
+    render(isAnimation) {
 
-    render() {
-
-        for(let product of this.products) {
+        for(let product of this.computedProducts) {
             product.position = product.el.getBoundingClientRect() //obtenir la position de chaque élément avant de les supprimer
         }
 
         this.productsEl.innerHTML = ""; //reset le html
 
-        this.products.forEach(product => { //ajouter chaque produit au html
+        this.computedProducts.forEach(product => { //ajouter chaque produit au html
 
             let el = product.el;
             this.productsEl.appendChild(el)
 
         })
 
-        //appeller getBoundingClientRect seulement quand tous les éléments ont été ajoutés à la liste
-        this.products.forEach(product => {
+        //si pas d'anim pas la peine d'aller plus loin
+        if(!isAnimation)
+            return;
+
+        //animations
+        this.computedProducts.forEach(product => {
 
             let el = product.el
             let style = el.style;
@@ -95,6 +115,9 @@ export default class Products {
 
             let x = product.position.left - newPosition.left;
             let y = product.position.top - newPosition.top;
+
+            if(product.position.x == 0 || product.position.y ==0) //pas besoin d'animer si l'élément n'existait pas
+                return;
 
             el.style.transform = `translateX(${x}px) translateY(${y}px)`
             el.style.transition = `transform 0s`
@@ -108,6 +131,15 @@ export default class Products {
                 el.style.transition = ''
             })
         })
+
+        if(this.computedProducts.length == 0) {
+
+            let noProducts = document.createElement('div')
+            noProducts.classList.add('products__content_list--no-products')
+            noProducts.textContent = "Aucun produit trouvé pour votre recherche"
+
+            this.productsEl.appendChild(noProducts)
+        }
 
 
     }

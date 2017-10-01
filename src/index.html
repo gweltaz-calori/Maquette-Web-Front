@@ -69,7 +69,7 @@
                     </form>
                 </header>
                 <div class="products__content">
-                    <ul class="products__content_list">
+                    <ul class="products__content_list products__content_list--best-seller">
                         <!--<li class="products__content__list-item">
                             <article class="product">
                                 <header class="product__header">
@@ -322,7 +322,7 @@
             </div>
         </section>
 
-        <section id="all-models">
+        <section id="all-models" class="all-models">
             <div class="wrapper wrapper--centered">
                 <header class="products__header">
                     <span class="products__header__title">Tous les modèles</span>
@@ -330,22 +330,24 @@
                         <span class="filter">
                             <div class="filter__content icon-input filter__search">
                                 <img src="./icons/search.png" class="icon-input__icon">
-                                <input class="icon-input__value" placeholder="Rechercher un modèle" type="text">
+                                <input class="icon-input__value filter__search__order" placeholder="Rechercher un modèle" type="text">
                             </div>
                         </span>
                         <span class="filter">
                             <label class="filter__label filter__label--primary">trier par :</label>
                             <div class="filter__content select select--primary filter__order">
-                                <select class="select__wrapper">
+                                <select class="select__wrapper filter__order__sort">
                                     <option value="popularity">popularité</option>
+                                    <option value="name">nom</option>
+                                    <option value="price">price</option>
                                 </select>
                             </div>
                         </span>
                     </form>
                 </header>
                 <div class="products__content">
-                    <ul class="products__content_list">
-                        <li class="products__content__list-item">
+                    <ul class="products__content_list products__content_list--all-models">
+                        <!--<li class="products__content__list-item">
                             <article class="product">
                                 <header class="product__header">
                                     <img class="product__header__image" src="images/sections/products/product_a.png" alt="">
@@ -418,7 +420,7 @@
                                     <span class="product__footer__stock">5 en stock</span>
                                 </footer>
                             </article>
-                        </li>
+                        </li>-->
                     </ul>
                 </div>
                 <footer class="products__footer">

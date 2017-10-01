@@ -12,8 +12,14 @@ let productSlider = new Slider({
 });
 
 
-let products = new Products({
+let bestSeller = new Products({
     el : ".best-seller",
-    productsEl :".products__content_list" ,
-    productsUrl : "./bestSeller.json"
+    productsEl :".products__content_list--best-seller" ,
+    productsUrl : "./products.json"
+});
+
+let allModels = new Products({
+    el : ".all-models",
+    productsEl :".products__content_list--all-models" ,
+    productsUrl : "./products.json"
 });

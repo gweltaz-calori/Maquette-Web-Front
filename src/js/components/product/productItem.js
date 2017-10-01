@@ -3,7 +3,6 @@ export default class ProductItem {
     constructor(props) {
 
         this.props = props;
-
         this.render()
     }
 

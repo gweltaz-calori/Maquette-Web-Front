@@ -61,7 +61,7 @@ main {
 }
 
 .products__content__list-item:not(:last-child) {
-    margin-right: 1px;
+    margin-right: 5px;
 }
 
 .product {
@@ -169,10 +169,16 @@ main {
     }
 
     .products__content__list-item {
+        position: static;
         display: block;
         width: 72%;
-        margin: 5px 0;
         @include center(true,false);
+        transform: none;
+        left:0;
+    }
+
+    .products__content__list-item:not(:last-child) {
+        margin: 5px auto;
     }
 
     .product {
@@ -192,5 +198,6 @@ main {
 @media all and (max-width: $phone){
     .products__content__list-item {
         width: 100%;
+
     }
 }

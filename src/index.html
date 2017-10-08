@@ -28,7 +28,7 @@
         </div>
     </header>
     <main>
-        <section id="hero">
+        <section id="hero" class="hero">
             <img class="hero__background" src="images/sections/hero/bicycle.png" alt="">
             <div class="wrapper wrapper--centered wrapper--article">
                 <article class="hero__article">
@@ -43,8 +43,11 @@
                         <a href="" class="button hero__article__button">
                             <div class="button__wrapper">
                                 <span class="button__content">commander</span>
+                                <span class="button__content button__content--over">commander</span>
                                 <img class="button__icon" src="icons/arrow_right.png" alt="">
+                                <img class="button__icon button__icon--over" src="icons/blue_arrow_right.png" alt="">
                             </div>
+                            <div class="button__background button__background--over"></div>
                         </a>
                     </footer>
                 </article>
@@ -70,86 +73,13 @@
                 </header>
                 <div class="products__content">
                     <ul class="products__content_list products__content_list--best-seller">
-                        <!--<li class="products__content__list-item">
-                            <article class="product">
-                                <header class="product__header">
-                                    <img class="product__header__image" src="images/sections/products/product_a.png" alt="">
-                                </header>
-                                <div class="product__content">
-                                    <h1 class="product__content__name">Nom du modèle un peu long</h1>
-                                    <h2 class="product__content__color">Manuel - Vert Gazon</h2>
-                                </div>
-                                <footer class="product__footer">
-                                    <span class="product__footer__stock">0 en stock</span>
-                                </footer>
-                            </article>
-                        </li>
-                        <li class="products__content__list-item">
-                            <article class="product">
-                                <header class="product__header">
-                                    <img class="product__header__image" src="images/sections/products/product_b.png" alt="">
-                                </header>
-                                <div class="product__content">
-                                    <h1 class="product__content__name">Un autre modèle
-                                        un autre nom</h1>
-                                    <h2 class="product__content__color">Semi-Automatique - Blanc</h2>
-                                </div>
-                                <footer class="product__footer">
-                                    <span class="product__footer__stock">1 en stock</span>
-                                </footer>
-                            </article>
-                        </li>
-                        <li class="products__content__list-item">
-                            <article class="product">
-                                <header class="product__header">
-                                    <img class="product__header__image" src="images/sections/products/product_c.png" alt="">
-                                </header>
-                                <div class="product__content">
-                                    <h1 class="product__content__name">Nom du modèle
-                                        toujours long</h1>
-                                    <h2 class="product__content__color">Semi-Automatique - Noir</h2>
-                                </div>
-                                <footer class="product__footer product__footer--disabled">
-                                    <span class="product__footer__stock">4 en stock</span>
-                                </footer>
-                            </article>
-                        </li>
-                        <li class="products__content__list-item">
-                            <article class="product">
-                                <header class="product__header">
-                                    <img class="product__header__image" src="images/sections/products/product_d.png" alt="">
-                                </header>
-                                <div class="product__content">
-                                    <h1 class="product__content__name">Modèle
-                                        Nombizarrelong</h1>
-                                    <h2 class="product__content__color">Manuel - Rouge</h2>
-                                </div>
-                                <footer class="product__footer product__footer--disabled">
-                                    <span class="product__footer__stock">4 en stock</span>
-                                </footer>
-                            </article>
-                        </li>
-                        <li class="products__content__list-item">
-                            <article class="product">
-                                <header class="product__header">
-                                    <img class="product__header__image" src="images/sections/products/product_e.png" alt="">
-                                </header>
-                                <div class="product__content">
-                                    <h1 class="product__content__name">Dernier modèle de
-                                        la liste</h1>
-                                    <h2 class="product__content__color">Automatique - Blanc</h2>
-                                </div>
-                                <footer class="product__footer product__footer--disabled">
-                                    <span class="product__footer__stock">5 en stock</span>
-                                </footer>
-                            </article>
-                        </li>-->
+                        <!-- les produits seront injectés en js -->
                     </ul>
                 </div>
             </div>
         </section>
 
-        <section id="news">
+        <section id="news" class="news">
             <div class="news__background">
                 <div class="news__background__top"></div>
                 <div class="news__background__bottom"></div>
@@ -187,9 +117,12 @@
                                 <footer class="list__footer">
                                     <a href="" class="button button--danger list__footer__view">
                                         <div class="button__wrapper">
-                                            <span class="button__content button__content--dark">consulter</span>
+                                            <span class="button__content">consulter</span>
+                                            <span class="button__content button__content--over">consulter</span>
                                             <img class="button__icon" src="icons/orange_arrow_right.png" alt="">
+                                            <img class="button__icon button__icon--over" src="icons/arrow_right.png" alt="">
                                         </div>
+                                        <div class="button__background button__background--over"></div>
                                     </a>
                                 </footer>
                             </article>
@@ -250,9 +183,11 @@
                         <div class="divider divider--horizontal order__history__footer__divider"></div>
                         <a href="" class="button button--light-dark order__history__view-history">
                             <div class="button__wrapper">
-                                <span class="button__content button__content--dark">voir l’historique</span>
+                                <span class="button__content">voir l’historique</span>
+                                <span class="button__content button__content--over">voir l’historique</span>
                                 <img class="button__icon" src="icons/black_arrow_right.png" alt="">
                             </div>
+                            <div class="button__background button__background--over"></div>
                         </a>
                     </footer>
                 </section>
@@ -347,80 +282,7 @@
                 </header>
                 <div class="products__content">
                     <ul class="products__content_list products__content_list--all-models">
-                        <!--<li class="products__content__list-item">
-                            <article class="product">
-                                <header class="product__header">
-                                    <img class="product__header__image" src="images/sections/products/product_a.png" alt="">
-                                </header>
-                                <div class="product__content">
-                                    <h1 class="product__content__name">Nom du modèle un peu long</h1>
-                                    <h2 class="product__content__color">Manuel - Vert Gazon</h2>
-                                </div>
-                                <footer class="product__footer">
-                                    <span class="product__footer__stock">0 en stock</span>
-                                </footer>
-                            </article>
-                        </li>
-                        <li class="products__content__list-item">
-                            <article class="product">
-                                <header class="product__header">
-                                    <img class="product__header__image" src="images/sections/products/product_b.png" alt="">
-                                </header>
-                                <div class="product__content">
-                                    <h1 class="product__content__name">Un autre modèle
-                                        un autre nom</h1>
-                                    <h2 class="product__content__color">Semi-Automatique - Blanc</h2>
-                                </div>
-                                <footer class="product__footer">
-                                    <span class="product__footer__stock">1 en stock</span>
-                                </footer>
-                            </article>
-                        </li>
-                        <li class="products__content__list-item">
-                            <article class="product">
-                                <header class="product__header">
-                                    <img class="product__header__image" src="images/sections/products/product_c.png" alt="">
-                                </header>
-                                <div class="product__content">
-                                    <h1 class="product__content__name">Nom du modèle
-                                        toujours long</h1>
-                                    <h2 class="product__content__color">Semi-Automatique - Noir</h2>
-                                </div>
-                                <footer class="product__footer product__footer--disabled">
-                                    <span class="product__footer__stock">4 en stock</span>
-                                </footer>
-                            </article>
-                        </li>
-                        <li class="products__content__list-item">
-                            <article class="product">
-                                <header class="product__header">
-                                    <img class="product__header__image" src="images/sections/products/product_d.png" alt="">
-                                </header>
-                                <div class="product__content">
-                                    <h1 class="product__content__name">Modèle
-                                        Nombizarrelong</h1>
-                                    <h2 class="product__content__color">Manuel - Rouge</h2>
-                                </div>
-                                <footer class="product__footer product__footer--disabled">
-                                    <span class="product__footer__stock">4 en stock</span>
-                                </footer>
-                            </article>
-                        </li>
-                        <li class="products__content__list-item">
-                            <article class="product">
-                                <header class="product__header">
-                                    <img class="product__header__image" src="images/sections/products/product_e.png" alt="">
-                                </header>
-                                <div class="product__content">
-                                    <h1 class="product__content__name">Dernier modèle de
-                                        la liste</h1>
-                                    <h2 class="product__content__color">Automatique - Blanc</h2>
-                                </div>
-                                <footer class="product__footer product__footer--disabled">
-                                    <span class="product__footer__stock">5 en stock</span>
-                                </footer>
-                            </article>
-                        </li>-->
+                        <!-- les produits seront injectés en js -->
                     </ul>
                 </div>
                 <footer class="products__footer">
@@ -428,8 +290,10 @@
                     <a href="" class="button button--light-dark button--bottom view-products">
                         <div class="button__wrapper">
                             <img class="button__icon button__icon--bottom" src="icons/arrow_bottom.png" alt="">
-                            <span class="button__content button__content--bottom button__content--dark">voir tous les modèles</span>
+                            <span class="button__content button__content--bottom">voir tous les modèles</span>
+                            <span class="button__content button__content--over button__content--bottom">voir tous les modèles</span>
                         </div>
+                        <div class="button__background button__background--over"></div>
                     </a>
                 </footer>
             </div>

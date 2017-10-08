@@ -5,16 +5,18 @@
     border: solid $white 1px;
     display: block;
     padding: 9.5px;
+    position: relative;
+    overflow: hidden;
 }
 
 .button__wrapper {
     @include center(false,true);
     height:100%;
-    position: relative;
+
 }
 
 .button__content {
-    @include center(false, true);
+    @include center(false,true);
     position: absolute;
     color: $white;
     font-size: $button_text_size;
@@ -22,34 +24,82 @@
     vertical-align: middle;
 }
 
-.button--danger {
-    border-color: $red;
+.button__content.button__content--over {
+    color: $blue;
+    transform: translateY(-10px);
+    opacity: 0;
 }
 
-.button--dark {
-    border-color: $light_grey;
+.button__background {
+    z-index: -1;
+    background-color: $blue;
+    left:0;
+    right:0;
+    bottom:0;
+    height:100%;
+    position: absolute;
+}
+
+.button__background--over {
+    background-color: $white;
+    transform: translateY(33px);
 }
 
 .button--normal {
     border-color: $light_black;
+
+    .button__background--over {
+        background-color: $light_black ;
+    }
+
+    .button__content {
+        color: $light_black;
+
+        &.button__content--over {
+            color: $light_green;
+        }
+    }
+}
+
+.button--danger {
+    border-color: $red;
+    .button__background--over {
+        background-color: $red ;
+    }
+
+    .button__content {
+        color: $light_grey;
+
+        &.button__content--over {
+            color: $white;
+        }
+    }
 }
 
 .button--light-dark {
     border-color: $grey;
+    .button__content {
+        color: $light_grey;
+
+    }
+    .button__background--over {
+        background-color: $grey;
+    }
 }
 
-.button__content--dark {
-    color: $light_grey;
-}
-
-.button__content.button__content--normal {
-    color: $light_black;
-}
 
 .button__icon {
     @include center(false, true);
     right:0;
     position: absolute;
+}
+
+.button__icon {
+
+    &.button__icon--over {
+        transform: translateY(10px);
+        opacity: 0;
+    }
 }
 
 .button__icon.button__icon--bottom {

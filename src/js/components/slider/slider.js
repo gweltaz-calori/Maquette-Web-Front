@@ -3,6 +3,7 @@ import SliderIndicators from "./sliderIndicators";
 import {TimelineMax, TweenMax} from 'gsap';
 import Bus from "../../utils/bus";
 import '../../utils/prototypes';
+import Buttons from "../button/buttons";
 
 export default class Slider {
 
@@ -14,6 +15,8 @@ export default class Slider {
         this.sliderIndicators = null;
         this.currentSlide = 0;
         this.animating = false;
+        this.onComplete = options.onComplete
+
 
         // promise pour gérer l'asynchrone
         this.getSlides().then(slides => {
@@ -95,6 +98,7 @@ export default class Slider {
         this.sliderIndicators = new SliderIndicators({
             slides: this.slides
         });
+
 
     }
 
@@ -224,7 +228,12 @@ export default class Slider {
 
         slider.innerHTML = this.template;
 
+        let max = this.slides.length
         for (let slide of this.slides) {
+            TweenMax.set(slide.el,{
+                zIndex : max
+            })
+            max--
             slider.querySelector('.slider__content').appendChild(slide.el);
         }
 
@@ -236,6 +245,7 @@ export default class Slider {
 
         this.el.appendChild(slider);
 
+        this.onComplete();
 
     }
 }

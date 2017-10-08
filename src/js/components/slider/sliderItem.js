@@ -28,9 +28,12 @@ export default class SliderItem{
                 </p>
                 <a href="${this.props.url}" class="button button--normal slider__slide__order">
                     <div class="button__wrapper">
-                        <span class="button__content button__content--normal">commander</span>
+                        <span class="button__content">commander</span>
+                        <span class="button__content button__content--over">commander</span> 
                         <img class="button__icon" src="icons/black_arrow_right.png" alt="">
+                        <img class="button__icon button__icon--over" src="icons/green_arrow_right.png" alt="">
                     </div>
+                    <div class="button__background button__background--over"></div>
                 </a>
             </div>
             

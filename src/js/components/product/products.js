@@ -55,8 +55,10 @@ export default class Products {
     initEvents() {
 
         this.filter.addEventListener('change',() => this.sortProducts())
-        if(this.searchInput)
+        if(this.searchInput) {
             this.searchInput.addEventListener('input',() => this.searchProducts())
+        }
+
     }
 
     sortProducts(isAnimation = true) {

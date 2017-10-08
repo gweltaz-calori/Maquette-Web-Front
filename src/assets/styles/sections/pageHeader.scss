@@ -110,3 +110,8 @@
 }
 
 
+@media all and (max-width: $phone){
+    .page__header__session {
+        display: none;
+    }
+}

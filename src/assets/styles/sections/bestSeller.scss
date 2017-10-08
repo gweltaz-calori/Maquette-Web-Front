@@ -1,7 +1,7 @@
 @import "../variables";
 @import "../mixins";
 
-#best-seller {
+.best-seller {
     height: 400px;
     width: 100%;
 }
@@ -12,7 +12,10 @@
 
 
 @media all and (max-width: $tablet){
-    #best-seller {
+    .best-seller {
         height:auto;
+    }
+    .best-seller__filters {
+        float: none;
     }
 }

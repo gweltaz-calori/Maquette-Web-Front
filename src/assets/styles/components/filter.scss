@@ -1,0 +1,26 @@
+
+@import "../variables";
+@import "../mixins";
+
+.filter {
+  display: inline-block;
+  margin-left: 22px;
+}
+
+.filter__label {
+  margin-right: 6px;
+  font-size: $filter_label_font_size;
+}
+
+.filter__label.filter__label--accent {
+  color: $white;
+}
+
+.filter__label.filter__label--primary {
+  color: $light_grey;
+}
+
+.filter__content,.filter__label {
+  display: inline-block;
+  vertical-align: middle;
+}

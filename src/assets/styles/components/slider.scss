@@ -48,11 +48,15 @@
     margin: 0 5px;
     transition: transform 0.4s;
     cursor: pointer;
+    -webkit-backface-visibility: hidden;
+    transform: scale(0.9);
+    transform: scale3d(0.9,0.9,0.9) translateZ(0);
 }
 
 .slider__indicators__indicator.slider__indicators__indicator--active {
     border:solid $black 1px;
-    transform: scale3d(1.1,1.1,1.1);
+    transform: scale(1);
+    transform: scale3d(1,1,1);
 }
 
 .slider__indicators__indicator__picture {

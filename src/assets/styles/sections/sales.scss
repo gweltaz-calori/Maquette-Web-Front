@@ -1,7 +1,7 @@
 @import "../variables";
 @import "../mixins";
 
-#sales {
+.sales {
     padding: $sales_padding;
     position: relative;
     height:472.6px;
@@ -78,4 +78,18 @@
     .sales__graph {
         width: 100%;
     }
+
+    .sales__filters {
+        display: block;
+        float: none;
+    }
+    .filter {
+        display: block;
+        margin:15px;
+    }
+
+    .filter__label {
+        display: block;
+    }
 }
+

@@ -133,30 +133,7 @@ main {
 }
 
 
-/*filters*/
 
-.filter {
-    display: inline-block;
-    margin-left: 22px;
-}
-
-.filter__label {
-    margin-right: 6px;
-    font-size: $filter_label_font_size;
-}
-
-.filter__label.filter__label--accent {
-    color: $white;
-}
-
-.filter__label.filter__label--primary {
-    color: $light_grey;
-}
-
-.filter__content,.filter__label {
-    display: inline-block;
-    vertical-align: middle;
-}
 
 
 
@@ -180,9 +157,10 @@ main {
         @include center(true,false);
         transform: none;
         left:0;
+
     }
 
-    .products__content__list-item:not(:last-child) {
+    .products__content__list-item,.products__content__list-item:not(:last-child) {
         margin: 5px auto;
     }
 
@@ -203,6 +181,5 @@ main {
 @media all and (max-width: $phone){
     .products__content__list-item {
         width: 100%;
-
     }
 }

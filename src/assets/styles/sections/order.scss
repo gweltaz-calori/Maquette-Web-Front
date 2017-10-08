@@ -1,7 +1,7 @@
 @import "../variables";
 @import "../mixins";
 
-#order {
+.order-section {
     padding: $order_padding;
 }
 /* common list style*/
@@ -233,4 +233,6 @@
     .list__footer {
         display: none;
     }
+
+
 }

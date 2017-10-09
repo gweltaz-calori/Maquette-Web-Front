@@ -49,6 +49,13 @@
 
 .order {
     width: 436px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.button--order {
+    transform: translateY(30px);
+    opacity:0;
 }
 
 .list__content__item:not(:last-child) {

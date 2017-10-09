@@ -87,6 +87,21 @@
     }
 }
 
+.button--success {
+    border-color: $light_green;
+
+    .button__background--over {
+        background-color: $light_green ;
+    }
+
+    .button__content {
+        color: $light_black;
+
+        &.button__content--over {
+            color: $white;
+        }
+    }
+}
 
 .button__icon {
     @include center(false, true);

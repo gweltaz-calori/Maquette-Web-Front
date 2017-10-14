@@ -7,12 +7,13 @@ const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const express = require('express');
 
+
 const DEV = process.env.NODE_ENV == "dev";
 
 module.exports = {
-    entry: './src/app.js',
+    entry: ['./src/app.js','webpack-hot-middleware/client','./build/devClient.js'] ,
     output: {
-        publicPath: './',
+        publicPath: DEV ? '/dist/' : './',
         path: path.resolve(__dirname, '../dist'),
         filename: 'build.js',
     },
@@ -67,7 +68,7 @@ module.exports = {
                 use: [ {
                     loader: 'html-loader',
                     options: {
-                        minimize: false
+                        minimize: true
                     }
                 }]
             }
@@ -83,6 +84,8 @@ module.exports = {
                 comments: false,
             },
         }),*/
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoEmitOnErrorsPlugin(),
         new CopyWebpackPlugin([
             { from: path.resolve(__dirname,'../public'), to: path.resolve(__dirname,'../dist/json') }
         ]),
@@ -94,10 +97,10 @@ module.exports = {
             template: path.resolve(__dirname,'../index.html'),
             filename: 'index.html',
 
-        }),
+        })
         
     ],
-    devServer: {
+    /*devServer: {
         //contentBase: path.resolve(__dirname,'../src'),
         setup : function(app){
             app.use('/json', express.static(path.join(__dirname, '../public')))
@@ -106,5 +109,7 @@ module.exports = {
         publicPath : '/dist/',
         compress: true,
         port: 9000,
-    }
+    }*/
+
+
 }

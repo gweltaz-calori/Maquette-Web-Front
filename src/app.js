@@ -10,6 +10,7 @@ import Products from "./js/components/product/products";
 import Buttons from "./js/components/button/buttons";
 import Orders from "./js/components/order/orders";
 
+
 let productSlider = new Slider({
     el: ".news__content",
     slidesUrl: "./json/slides.json",
@@ -28,9 +29,6 @@ let allModels = new Products({
     productsUrl: "./json/products.json"
 });
 
-/*let profiles = new OrderProfiles({
-    el : '.order__profile'
-})*/
 
 let orders = new Orders({
     el: '.order'

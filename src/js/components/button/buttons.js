@@ -7,17 +7,17 @@ export default class Buttons {
         this.els = document.querySelectorAll(options.el);
         this.buttons = [];
 
-        this.init()
+        this.init();
     }
 
     init() {
 
-        for(let el of this.els) {
+        for (let el of this.els) {
             this.buttons.push(
                 new Button({
                     el
                 })
-            )
+            );
         }
 
     }

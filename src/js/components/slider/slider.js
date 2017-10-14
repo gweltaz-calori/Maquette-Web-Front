@@ -15,7 +15,7 @@ export default class Slider {
         this.sliderIndicators = null;
         this.currentSlide = 0;
         this.animating = false;
-        this.onComplete = options.onComplete
+        this.onComplete = options.onComplete;
 
 
         // promise pour gérer l'asynchrone
@@ -61,8 +61,8 @@ export default class Slider {
      */
     initEvents() {
 
-        this.left__slider__control.addEventListener('click', () => this.move( -1));
-        this.right__slider__control.addEventListener('click', () => this.move( 1));
+        this.left__slider__control.addEventListener('click', () => this.move(-1));
+        this.right__slider__control.addEventListener('click', () => this.move(1));
 
     }
 
@@ -228,19 +228,19 @@ export default class Slider {
 
         slider.innerHTML = this.template;
 
-        let max = this.slides.length
+        let max = this.slides.length;
         for (let slide of this.slides) {
-            TweenMax.set(slide.el,{
-                zIndex : max
-            })
-            max--
+            TweenMax.set(slide.el, {
+                zIndex: max
+            });
+            max--;
             slider.querySelector('.slider__content').appendChild(slide.el);
         }
 
         slider.querySelector('.slider__wrapper').appendChild(this.sliderIndicators.el);
 
-        this.right__slider__control =  slider.querySelector('.slider__right-control');
-        this.left__slider__control =  slider.querySelector('.slider__left-control');
+        this.right__slider__control = slider.querySelector('.slider__right-control');
+        this.left__slider__control = slider.querySelector('.slider__left-control');
 
 
         this.el.appendChild(slider);

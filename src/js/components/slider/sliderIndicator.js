@@ -41,8 +41,8 @@ export default class SliderIndicator {
     }
 
     /**
-    * emit that slider moved
-    */
+     * emit that slider moved
+     */
     move() {
         Bus.$emit('sliderMovedIndicator', {
             currentSlide: this.props.id
@@ -56,7 +56,7 @@ export default class SliderIndicator {
         this.el.innerHTML = `
             <img class="slider__indicators__indicator__picture" src="${this.props.image}" alt="">
             
-        `
+        `;
 
     }
 }

@@ -1,6 +1,4 @@
-
-
-export default class SliderItem{
+export default class SliderItem {
 
     constructor(props) {
 
@@ -37,7 +35,7 @@ export default class SliderItem{
                 </a>
             </div>
             
-        `
+        `;
 
     }
 

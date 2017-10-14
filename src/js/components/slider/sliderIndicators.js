@@ -34,7 +34,7 @@ export default class SliderIndicators {
         let slider__indicators__wrapper = document.createElement('div');
         slider__indicators__wrapper.classList.add('slider__indicators__wrapper');
 
-        for(let indicator of this.indicators) {
+        for (let indicator of this.indicators) {
             slider__indicators__wrapper.appendChild(indicator.el);
         }
 

@@ -4,13 +4,15 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const express = require('express');
 
 const DEV = process.env.NODE_ENV == "dev";
 
 module.exports = {
     entry: './src/app.js',
     output: {
-        publicPath: '/dist/',
+        publicPath: './',
         path: path.resolve(__dirname, '../dist'),
         filename: 'build.js',
     },
@@ -54,11 +56,20 @@ module.exports = {
                     {
                         loader: 'url-loader',
                         options: {
-                            name: '[name].[ext]',
+                            name: DEV ? '[path][name].[ext]' : 'assets/images/[name].[ext]',
                             limit: 8192
                         }
                     }
                 ]
+            },
+            {
+                test: /\.html$/,
+                use: [ {
+                    loader: 'html-loader',
+                    options: {
+                        minimize: false
+                    }
+                }]
             }
 
         ]
@@ -72,15 +83,27 @@ module.exports = {
                 comments: false,
             },
         }),*/
+        new CopyWebpackPlugin([
+            { from: path.resolve(__dirname,'../public'), to: path.resolve(__dirname,'../dist/json') }
+        ]),
         new ExtractTextPlugin({
-            filename : 'app.css',
+            filename : 'assets/css/app.css',
             disable : DEV
+        }),
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname,'../index.html'),
+            filename: 'index.html',
+
         }),
         
     ],
     devServer: {
-        contentBase: path.resolve(__dirname,'../src'),
+        //contentBase: path.resolve(__dirname,'../src'),
+        setup : function(app){
+            app.use('/json', express.static(path.join(__dirname, '../public')))
+        },
         watchContentBase: true,
+        publicPath : '/dist/',
         compress: true,
         port: 9000,
     }

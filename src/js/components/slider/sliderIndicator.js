@@ -6,6 +6,7 @@ export default class SliderIndicator {
 
         this.el = document.createElement('button');
         this.props = props;
+        this.props.imageUrl = require('../../../images/sections/new/'+this.props.image+'.jpeg');
 
         this.render();
         this.initEvents();
@@ -54,7 +55,7 @@ export default class SliderIndicator {
 
         this.el.classList.add('slider__indicators__indicator');
         this.el.innerHTML = `
-            <img class="slider__indicators__indicator__picture" src="${this.props.image}" alt="">
+            <img class="slider__indicators__indicator__picture" src="${this.props.imageUrl}" alt="">
             
         `;
 

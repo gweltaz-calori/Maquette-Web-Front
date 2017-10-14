@@ -209,7 +209,7 @@ export default class Slider {
         this.template = `
             
                 <button class="slider__control slider__left-control">
-                    <img src="./icons/components/slider/left_control.png" alt="">
+                    <img src="${require('../../../icons/components/slider/left_control.png')}" alt="">
                 </button>
                 <div class="slider__wrapper">
                     <div class="slider__interface">
@@ -220,7 +220,7 @@ export default class Slider {
                     <!-- sliderIndicators -->
                 </div>
                 <button class="slider__control slider__right-control">
-                    <img src="./icons/components/slider/right_control.png" alt="">
+                    <img src="${require('../../../icons/components/slider/right_control.png')}" alt="">
                 </button>
            
         

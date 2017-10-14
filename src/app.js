@@ -1,5 +1,6 @@
 import './js/utils/polyfills'
 
+
 import './assets/styles/style.scss';
 // Le slider est réutilisable et indépendant
 // possible d'ajouter un autre slider dans une autre div
@@ -11,20 +12,20 @@ import Orders from "./js/components/order/orders";
 
 let productSlider = new Slider({
     el: ".news__content",
-    slidesUrl: "./slides.json",
+    slidesUrl: "./json/slides.json",
     onComplete: () => initButtons()
 });
 
 let bestSeller = new Products({
     el: ".best-seller",
     productsEl: ".products__content_list--best-seller",
-    productsUrl: "./products.json"
+    productsUrl: "./json/products.json"
 });
 
 let allModels = new Products({
     el: ".all-models",
     productsEl: ".products__content_list--all-models",
-    productsUrl: "./products.json"
+    productsUrl: "./json/products.json"
 });
 
 /*let profiles = new OrderProfiles({

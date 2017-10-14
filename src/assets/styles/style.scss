@@ -32,7 +32,13 @@ html,body{
     width:100%;
     margin: 0;
     background-color: $white;
+
 }
+
+body {
+    overflow-x: hidden;
+}
+
 
 ul,h1,h2,h3,h4,p {
     margin: 0;
@@ -60,4 +66,8 @@ button,input {
     border: 0;
     background-color: transparent;
     padding:0;
+}
+
+img {
+    border: 0;
 }

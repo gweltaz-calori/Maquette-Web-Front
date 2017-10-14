@@ -4,18 +4,18 @@
 
 Voici comment utiliser le projet.
 
-#### Installer les d?pendances
+#### Installer les dependances
 ```bash
 npm install
 ```
 
-#### Pour lancer le serveur en d?veloppement
+#### Pour lancer le serveur en developpement
 ```
 npm run dev
 ```
 
 Le serveur se lance par d?faut port sur le port 9000.
-Si le port est d?ja pris modifier le port dans le package.json
+Si le port est deja pris modifier le port dans le package.json
 
 
 #### Pour build toutes les sources en production

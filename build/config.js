@@ -11,7 +11,7 @@ const express = require('express');
 const DEV = process.env.NODE_ENV == "dev";
 
 module.exports = {
-    entry: ['./src/app.js','webpack-hot-middleware/client','./build/devClient.js'] ,
+    entry: ['babel-polyfill','./src/app.js','webpack-hot-middleware/client','./build/devClient.js'] ,
     output: {
         publicPath: DEV ? '/dist/' : './',
         path: path.resolve(__dirname, '../dist'),

@@ -38,3 +38,8 @@ Les styles se trouvent dans le dossier ```/src/assets/style```
 Les scripts se trouvent dans le dossier ```/src/js```
 
 ```app.js``` est le point d'entr?e
+
+## Dans ce que j'ai réalisé
+
+Le tri se fait du plus petit au plus grand pour les lettres comme pour les chiffres
+La recherche se fait sur tous les champs y compris ceux non visibles

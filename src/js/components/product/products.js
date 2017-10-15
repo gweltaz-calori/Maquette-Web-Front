@@ -70,7 +70,14 @@ export default class Products {
     searchProducts() {
 
         let value = this.searchInput.value;
-        this.computedProducts = this.products.filter(product => product.props.name.toUpperCase().includes(value.toUpperCase()));
+        this.computedProducts = this.products.filter(product => {
+            //pour chaque propriété de l'objet on cherche
+            let found = Object.values(product.props).reduce((a,b) => {
+                return a || b.toString().toUpperCase().includes(value.toUpperCase())
+            },false);
+
+            return found;
+        });
 
         this.render(true);
     }

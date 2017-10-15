@@ -28,14 +28,16 @@
         "description" : "Manuel - Rouge",
         "image" : "product_d",
         "stock" : 4,
-        "price" :50
+        "price" :50,
+        "popularity" : 23
     },
     {
         "name" : "Dernier modèle de la liste",
         "description" : "Automatique - Blanc",
         "image" : "product_e",
         "stock" : 5,
-        "price" :55
+        "price" :55,
+        "popularity" : 230
     }
 
 ]

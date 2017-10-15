@@ -5,7 +5,6 @@ export default class OrderItem {
         this.icon = this.el.querySelector('.order__profile__icon ');
         this.status = this.el.querySelector('.order__profile__status ');
         this.button = this.el.querySelector('.button');
-
         this.initEvents();
     }
 

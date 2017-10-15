@@ -98,8 +98,12 @@
     font-size: 16px;
     font-weight:bold;
     margin-bottom: 7px;
-    max-width: 143px;
     line-height: 19.3px;
+    text-overflow: ellipsis;
+
+    max-width: 143px;
+    display: inline-block;
+    overflow: hidden;
 }
 
 .product__content__color {
@@ -180,5 +184,18 @@
 @media all and (max-width: $phone){
     .products__content__list-item {
         width: 100%;
+    }
+
+    .product__header {
+        height:127px;
+    }
+
+    .product__header__image {
+        height: auto;
+        width: 100%;
+    }
+
+    .product__content__name {
+        max-width: 107px;
     }
 }

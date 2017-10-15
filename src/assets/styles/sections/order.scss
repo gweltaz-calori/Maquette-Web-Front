@@ -237,9 +237,52 @@
 
 @media all and (max-width: $phone){
 
-    .list__footer {
-        display: none;
+
+
+    .list__content__item {
+        padding: 16px;
+        height:auto;
+        box-sizing: border-box;
     }
 
+    .list__content__item__header {
+        margin-right: 0;
+        width: 100%;
+    }
 
+    .formation__content {
+        text-align: center;
+    }
+
+    .list__content {
+        display: block;
+        margin-top: 12px;
+    }
+
+    .list__content__item__wrapper {
+        position: static;
+        transform: none;
+    }
+
+    .formation__picture,.order__profile {
+        margin: 0 auto;
+        display: block;
+    }
+    .order__content {
+        text-align: center;
+        width: 100%;
+    }
+
+   .list__footer {
+       width: 100%;
+       margin-top: 13px;
+   }
+
+    .list__footer__view {
+        position: relative;
+        transform: none !important /*pour ovverride le stlye inline*/;
+        margin: auto;
+        opacity: 1 !important; /*obligatoire pour override le style de l'animation (car anim en js)*/
+
+    }
 }

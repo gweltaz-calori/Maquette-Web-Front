@@ -45,3 +45,26 @@
 .nav__items__item__name.nav__items__item__name--active {
     color: $white;
 }
+
+@media all and (max-width: $tablet){
+    .page__footer__nav,.page__footer__nav:not(:last-child) {
+        margin: 0;
+        display: block;
+    }
+    .page__footer__nav:not(:last-child) {
+
+        margin-bottom: 45px;
+
+    }
+    
+    .nav__items__item,.nav__title {
+        text-align: center;
+    }
+
+}
+
+@media all and (max-width: $phone){
+
+
+
+}

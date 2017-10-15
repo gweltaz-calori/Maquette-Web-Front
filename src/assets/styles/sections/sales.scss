@@ -77,6 +77,8 @@
 @media all and (max-width: $tablet){
     .sales__graph {
         width: 100%;
+        @include center(true,true);
+        position: absolute;
     }
 
     .sales__filters {
@@ -85,11 +87,34 @@
     }
     .filter {
         display: block;
-        margin:15px;
+        margin:15px 0;
     }
 
     .filter__label {
         display: block;
+        margin-bottom: 10px;
+
+    }
+
+    .sales__header {
+        height:auto;
+    }
+
+    .sales__title {
+        position: static;
+    }
+
+    .sales__background__bottom {
+        height:437px;
+    }
+
+    .sales__footer {
+        position: relative;
+        height: 216px;
+    }
+
+    .sales {
+        height:601.6px;
     }
 }
 

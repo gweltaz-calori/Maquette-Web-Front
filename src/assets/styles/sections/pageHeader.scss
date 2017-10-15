@@ -34,6 +34,7 @@
 .page__header__menu__item__link {
     color: $semi_transparent_white;
     font-size: $header_font_size;
+    transition: color 0.4s;
 }
 
 
@@ -49,6 +50,9 @@
     transition : background-color,transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
+.page__header__menu__item__link:hover {
+    color: white;
+}
 
 .page__header__menu__item:hover:after,.page__header__menu__item.page__header__menu__item--active:after {
     background-color: white;
@@ -108,8 +112,30 @@
 }
 
 
-@media all and (max-width: $phone){
+@media all and (max-width: $tablet){
     .page__header__session {
         display: none;
+    }
+}
+
+@media all and (max-width: $phone){
+
+    .page__header__menu__item:after {
+        display: none;
+    }
+    .page__header__menu__item {
+        margin: 6.4px 0;
+        display: block;
+    }
+
+    .page__header {
+        height:auto;
+        padding: 20px 0;
+    }
+
+    .page__header__menu {
+        transform: none;
+        position: static;
+
     }
 }

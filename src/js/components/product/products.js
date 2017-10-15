@@ -9,15 +9,13 @@ export default class Products {
         this.productsEl = this.el.querySelector(options.productsEl);
         this.productsUrl = options.productsUrl;
         this.products = [];
-        this.computedProducts = [];
-        this.hydrating = false;
 
         this.getProducts().then(products => {
 
             this.initComponents(products);
             this.init();
             this.initEvents();
-            this.sortProducts(false); //sort at load
+            this.render(false); //trier au chargment sans anim
 
         });
 
@@ -45,42 +43,35 @@ export default class Products {
         for (let product of products) {
             let productItem = new ProductItem(product);
             this.products.push(productItem);
-
         }
-
-        this.computedProducts = this.products;
 
     }
 
     initEvents() {
 
         if (this.searchInput) {
-            this.searchInput.addEventListener('input', () => this.searchProducts());
+            this.searchInput.addEventListener('input', () => this.render(true));
         }
-        this.filter.addEventListener('change', () => this.sortProducts(true));
+        this.filter.addEventListener('change', () => this.render(true));
 
     }
 
-    sortProducts(isAnimation = true) {
-        this.computedProducts = this.computedProducts.sort((productA, productB) => this.compare(productA.props, productB.props));
+    //filtered list retourne une copie de la liste avec l'application des filtres et recherche (computed)
+    filteredList() {
+        let value = this.searchInput ? this.searchInput.value : ''; //input value
+        let list = this.products; //copie de la liste
 
-        this.render(isAnimation);
-    }
-
-    searchProducts() {
-
-        let value = this.searchInput.value;
-        this.computedProducts = this.products.filter(product => {
+        list = list.filter(product => {
             //pour chaque propriété de l'objet on cherche
-            let found = Object.values(product.props).reduce((a,b) => {
-                return a || b.toString().toUpperCase().includes(value.toUpperCase())
-            },false);
-
-            return found;
+            return Object.values(product.props).reduce((a, b) => {
+                return a || b.toString().toUpperCase().includes(value.toUpperCase());
+            }, false);
         });
 
-        this.render(true);
+        list = list.sort((productA, productB) => this.compare(productA.props, productB.props));
+        return list;
     }
+
 
     compare(a, b) {
         if (a[this.filter.value] < b[this.filter.value])
@@ -99,7 +90,9 @@ export default class Products {
     //render + animations du sort
     render(isAnimation) {
 
-        for (let product of this.computedProducts) {
+        let filteredList = this.filteredList(); //retrieve filtered list
+
+        for (let product of filteredList) {
             product.position = product.el.getBoundingClientRect(); //obtenir la position de chaque élément avant de les supprimer
         }
 
@@ -107,12 +100,12 @@ export default class Products {
 
         let firstChild = this.productsEl.firstChild; //pour ie
 
-        while( firstChild ) {
-            this.productsEl.removeChild( firstChild );
-            firstChild =  this.productsEl.firstChild;
+        while (firstChild) {
+            this.productsEl.removeChild(firstChild);
+            firstChild = this.productsEl.firstChild;
         }
 
-        this.computedProducts.forEach(product => { //ajouter chaque produit au html
+        filteredList.forEach(product => { //ajouter chaque produit au html
 
             let el = product.el;
             this.productsEl.appendChild(el);
@@ -121,15 +114,13 @@ export default class Products {
         });
 
 
-
         //si pas d'anim pas la peine d'aller plus loin
         if (!isAnimation)
             return;
 
 
-
         //animations
-        this.computedProducts.forEach(product => {
+        filteredList.forEach(product => {
 
             let el = product.el;
             let style = el.style;
@@ -154,7 +145,7 @@ export default class Products {
             });
         });
 
-        if (this.computedProducts.length == 0) {
+        if (filteredList.length == 0) {
 
             let noProducts = document.createElement('div');
             noProducts.classList.add('products__content_list--no-products');

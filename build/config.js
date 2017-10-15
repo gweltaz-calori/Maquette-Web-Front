@@ -1,17 +1,17 @@
-const webpack = require('webpack');
-const path = require('path');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const autoprefixer = require('autoprefixer');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const express = require('express');
+var webpack = require('webpack');
+var path = require('path');
+var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var CopyWebpackPlugin = require('copy-webpack-plugin');
+var autoprefixer = require('autoprefixer');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var express = require('express');
 
 
-const DEV = process.env.NODE_ENV == "dev";
+var DEV = process.env.NODE_ENV == "dev";
 
 module.exports = {
-    entry: ['babel-polyfill','./src/app.js','webpack-hot-middleware/client','./build/devClient.js'] ,
+    entry: ['babel-polyfill', './src/app.js', 'webpack-hot-middleware/client', './build/devClient.js'],
     output: {
         publicPath: DEV ? '/dist/' : './',
         path: path.resolve(__dirname, '../dist'),
@@ -27,28 +27,28 @@ module.exports = {
             {
                 test: /\.(s)?css$|\.sass$/,
                 use: ExtractTextPlugin.extract({
-                  fallback: "style-loader",
-                  use: [
-                    {
-                        loader : 'css-loader',
-                        options : {
-                            minimize: true
-                        }
-                    },
-                    {
-                        loader: "sass-loader",
-                        options : {
-                            minimize: true
-                        }
-                    },
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            plugins: function () {
-                                return [autoprefixer('last 10 versions','Firefox >= 18','ie 10')]
+                    fallback: "style-loader",
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                minimize: true
                             }
-                        }
-                    }]
+                        },
+                        {
+                            loader: "sass-loader",
+                            options: {
+                                minimize: true
+                            }
+                        },
+                        {
+                            loader: 'postcss-loader',
+                            options: {
+                                plugins: function () {
+                                    return [autoprefixer('last 10 versions', 'Firefox >= 18', 'ie 10')];
+                                }
+                            }
+                        }]
                 })
             },
             {
@@ -65,7 +65,7 @@ module.exports = {
             },
             {
                 test: /\.html$/,
-                use: [ {
+                use: [{
                     loader: 'html-loader',
                     options: {
                         minimize: true
@@ -87,18 +87,18 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
         new CopyWebpackPlugin([
-            { from: path.resolve(__dirname,'../public'), to: path.resolve(__dirname,'../dist/json') }
+            {from: path.resolve(__dirname, '../public'), to: path.resolve(__dirname, '../dist/json')}
         ]),
         new ExtractTextPlugin({
-            filename : 'assets/css/app.css',
-            disable : DEV
+            filename: 'assets/css/app.css',
+            disable: DEV
         }),
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname,'../index.html'),
+            template: path.resolve(__dirname, '../index.html'),
             filename: 'index.html',
 
         })
-        
+
     ],
     /*devServer: {
         //contentBase: path.resolve(__dirname,'../src'),
@@ -112,4 +112,4 @@ module.exports = {
     }*/
 
 
-}
+};

@@ -7,7 +7,7 @@ var WebpackHotMiddleware = require('webpack-hot-middleware');
 var WebpackDevMiddleware = require('webpack-dev-middleware');
 var compiler = webpack(require('./config.js'));
 
-var URL = "http://localhost:"+process.env.DEV_PORT;
+var URL = "http://localhost:" + process.env.DEV_PORT;
 
 
 var devMiddleware = WebpackDevMiddleware(compiler, {
@@ -27,12 +27,11 @@ compiler.plugin('compilation', function (compilation) {
 });
 
 
-
 app.use(devMiddleware);
 
 app.use(hotMiddleware);
 
-devMiddleware.waitUntilValid(function() {
+devMiddleware.waitUntilValid(function () {
     console.log('> Listening at ' + URL + '\n');
     opn(URL);
 });

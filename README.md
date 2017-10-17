@@ -4,7 +4,7 @@
 
 Voici comment utiliser le projet.
 
-#### Installer les dependances
+#### Installer les dépendances
 ```bash
 npm install
 ```
@@ -14,8 +14,8 @@ npm install
 npm run dev
 ```
 
-Le serveur se lance par defaut port sur le port 9000.
-Si le port est deja pris modifier le port dans le package.json
+Le serveur se lance par défaut port sur le port 9000.
+Si le port est deja pris, modifier le port dans le package.json
 
 
 #### Pour build toutes les sources en production
@@ -23,13 +23,13 @@ Si le port est deja pris modifier le port dans le package.json
 npm run build
 ```
 
-Les sources compilees se trouvent dans le dossier ```/dist```
-J'ai deja genere toutes les sources en cas de problemes.
+Les sources compilées se trouvent dans le dossier ```/dist```
+J'ai deja generé toutes les sources en cas de problèmes.
 
-Pour tester en prod il faut servir le dossier ```/dist``` avec un serveur (ex : serveur local de phpstorm). On est oblige de les mettre sur un serveur (CORS).
+Pour tester en prod il faut servir le dossier ```/dist``` avec un serveur (ex : serveur local de phpstorm). On est obligé de les mettre sur un serveur (CORS).
 
 
-## Informations complementaires
+## Informations complémentaires
 
 Les sources se trouvent dans le dossier ```/src```
 

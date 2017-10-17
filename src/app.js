@@ -9,6 +9,7 @@ import Slider from './js/components/slider/slider';
 import Products from "./js/components/product/products";
 import Buttons from "./js/components/button/buttons";
 import Orders from "./js/components/order/orders";
+import Graph from "./js/components/graph/graph";
 
 
 let productSlider = new Slider({
@@ -29,6 +30,9 @@ let allModels = new Products({
     productsUrl: "./json/products.json"
 });
 
+let graph = new Graph({
+    el : ".sales__graph"
+});
 
 let orders = new Orders({
     el: '.order'

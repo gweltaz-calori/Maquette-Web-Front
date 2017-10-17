@@ -77,8 +77,8 @@
 @media all and (max-width: $tablet){
     .sales__graph {
         width: 100%;
-        @include center(true,true);
-        position: absolute;
+        /*@include center(true,true);
+        position: absolute;*/
     }
 
     .sales__filters {

@@ -59,6 +59,7 @@
 }
 
 .sales__graph {
+    @include center(true,false);
     margin-left: -2px;
     margin-top: 1px;
 }
@@ -118,3 +119,9 @@
     }
 }
 
+
+@media all and (max-width: $phone) {
+    .sales {
+        display: none;
+    }
+}

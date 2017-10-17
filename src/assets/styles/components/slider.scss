@@ -19,7 +19,7 @@
 
 .slider__interface {
     display:  block;
-    margin-bottom: 40px;
+    margin-bottom: 31.5px;
     width: 100%;
 }
 
@@ -42,16 +42,16 @@
 .slider__indicators__indicator {
     border-radius: 50%;
     border:solid $white 1px;
-    height:39px;
-    width: 39px;
+    height:49px;
+    width: 49px;
     overflow: hidden;
     position: relative;
-    margin: 0 5px;
+    margin: 0 3.15px;
     transition: transform 0.4s;
     cursor: pointer;
     -webkit-backface-visibility: hidden;
-    transform: scale(0.9);
-    transform: scale3d(0.9,0.9,0.9) translateZ(0);
+    transform: scale(0.8);
+    transform: scale3d(0.8,0.8,0.8) translateZ(0);
 }
 
 .slider__indicators__indicator.slider__indicators__indicator--active {
@@ -103,9 +103,9 @@
     position: relative;
     overflow: hidden;
     display: inline-block;
-    vertical-align: middle;
-    height: 178px;
-    width: 353px;
+    vertical-align: top;
+    height: 187px;
+    width: 350px;
 
 }
 
@@ -118,13 +118,14 @@
 .slider__slide__content {
     display: inline-block;
     width: 390px;
-    vertical-align: middle;
-    padding-left: 40px;
-    margin-top: -2px;
+    vertical-align: top;
+    padding-left: 44px;
+
 }
 
 .slider__slide__title {
     margin-bottom: 21px;
+    margin-top: 4px;
     font-size: $slider_title_size;
     font-weight:normal;
 }

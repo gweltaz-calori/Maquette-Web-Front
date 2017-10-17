@@ -47,6 +47,28 @@
 }
 
 @media all and (max-width: $tablet){
+
+    .page__footer__nav:not(:last-child) {
+        margin-right: 25px;
+    }
+    
+    .nav__items__item,.nav__title {
+        text-align: center;
+    }
+
+    .page__footer--wrapper {
+        display: inline-block;
+        width: auto;
+    }
+
+    .page__footer__nav {
+        margin-top: 44px;
+    }
+
+}
+
+@media all and (max-width: $phone){
+
     .page__footer__nav,.page__footer__nav:not(:last-child) {
         margin: 0;
         display: block;
@@ -56,15 +78,5 @@
         margin-bottom: 45px;
 
     }
-    
-    .nav__items__item,.nav__title {
-        text-align: center;
-    }
-
-}
-
-@media all and (max-width: $phone){
-
-
 
 }

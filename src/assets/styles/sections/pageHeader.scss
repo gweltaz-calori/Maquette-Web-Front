@@ -113,8 +113,13 @@
 
 
 @media all and (max-width: $tablet){
-    .page__header__session {
+    .page__header__session__user,.page__header__session__user__name,.page__header__session_add,.page__header__divider__wrapper {
         display: none;
+    }
+
+    .page__header__session {
+        position: absolute;
+        right:50px;
     }
 }
 
